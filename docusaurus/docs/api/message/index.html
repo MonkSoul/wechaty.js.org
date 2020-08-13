@@ -1,0 +1,460 @@
+<p>All wechat messages will be encapsulated as a Message.</p>
+
+<h2 id="message">Message</h2>
+
+<p>All wechat messages will be encapsulated as a Message.</p>
+
+<p><a href="https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/ding-dong-bot.ts">Examples/Ding-Dong-Bot</a></p>
+
+<p><strong>Kind</strong>: global class</p>
+
+<ul>
+  <li><a href="message.md#Message">Message</a>
+    <ul>
+      <li><em>instance</em>
+        <ul>
+          <li><a href="message.md#Message+from">.from()</a> ⇒ <code class="language-plaintext highlighter-rouge">Contact</code> | <code class="language-plaintext highlighter-rouge">null</code></li>
+          <li><a href="message.md#Message+to">.to()</a> ⇒ <code class="language-plaintext highlighter-rouge">Contact</code> | <code class="language-plaintext highlighter-rouge">null</code></li>
+          <li><a href="message.md#Message+room">.room()</a> ⇒ <code class="language-plaintext highlighter-rouge">Room</code> | <code class="language-plaintext highlighter-rouge">null</code></li>
+          <li><a href="message.md#Message+content"><del>.content()</del></a></li>
+          <li><a href="message.md#Message+text">.text()</a> ⇒ <code class="language-plaintext highlighter-rouge">string</code></li>
+          <li><a href="message.md#Message+say">.say(textOrContactOrFile)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="message.md#Message+type">.type()</a> ⇒ <code class="language-plaintext highlighter-rouge">MessageType</code></li>
+          <li><a href="message.md#Message+self">.self()</a> ⇒ <code class="language-plaintext highlighter-rouge">boolean</code></li>
+          <li><a href="message.md#Message+mention">.mention()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact []&gt;</code></li>
+          <li><a href="message.md#Message+mentionSelf">.mentionSelf()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;boolean&gt;</code></li>
+          <li><a href="message.md#Message+forward">.forward(to)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="message.md#Message+date">.date()</a> ⇒ <code class="language-plaintext highlighter-rouge">Date</code></li>
+          <li><a href="message.md#Message+age">.age()</a> ⇒ <code class="language-plaintext highlighter-rouge">number</code></li>
+          <li><a href="message.md#Message+file"><del>.file()</del></a></li>
+          <li><a href="message.md#Message+toFileBox">.toFileBox()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;FileBox&gt;</code></li>
+          <li><a href="message.md#Message+toContact">.toContact()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact&gt;</code></li>
+          <li><a href="message.md#Message+toUrlLink">.toUrlLink()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;UrlLink&gt;</code></li>
+        </ul>
+      </li>
+      <li><em>static</em>
+        <ul>
+          <li><a href="message.md#Message.find">.find()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Message&gt;</code></li>
+          <li><a href="message.md#Message.findAll">.findAll()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Message []&gt;</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="messagefrom--contact--null">message.from() ⇒ <code class="language-plaintext highlighter-rouge">Contact | null</code></h3>
+
+<p>Get the sender from a message.</p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">m</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">room</span><span class="p">()</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">topic</span><span class="p">()</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Room: </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2"> Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> Text: </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> Text: </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="messageto--contact--null">message.to() ⇒ <code class="language-plaintext highlighter-rouge">Contact</code> | <code class="language-plaintext highlighter-rouge">null</code></h3>
+
+<p>Get the destination of the message Message.to() will return null if a message is in a room, use Message.room() to get the room.</p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>
+
+<h4 id="example">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">m</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">toContact</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">to</span><span class="p">()</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">toContact</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">toContact</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`toContact: </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2"> Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> Text: </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> Text: </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="messageroom--room--null">message.room() ⇒ <code class="language-plaintext highlighter-rouge">Room</code> | <code class="language-plaintext highlighter-rouge">null</code></h3>
+
+<p>Get the room from the message. If the message is not in a room, then will return <code class="language-plaintext highlighter-rouge">null</code></p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>
+
+<h4 id="example-1">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">m</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">room</span><span class="p">()</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">topic</span><span class="p">()</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Room: </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2"> Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> Text: </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> Text: </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="messagecontent"><del>message.content()</del></h3>
+
+<p><em><strong>Deprecated</strong></em></p>
+
+<p>use <a href="message.md#Message+text">text</a> instead</p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>
+
+<h3 id="messagetext--string">message.text() ⇒ <code class="language-plaintext highlighter-rouge">string</code></h3>
+
+<p>Get the text content of the message</p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">m</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">room</span><span class="p">()</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">topic</span><span class="p">()</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Room: </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2"> Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> Text: </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> Text: </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="messagetorecalled--promise-message--null">message.toRecalled() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Message | null&gt;</code></h3>
+
+<p>Get the text content of the recalled message</p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#message"><code class="language-plaintext highlighter-rouge">Message</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">m</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Recalled</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">recalledMessage</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">m</span><span class="p">.</span><span class="nx">toRecalled</span><span class="p">()</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Message: </span><span class="p">${</span><span class="nx">recalledMessage</span><span class="p">}</span><span class="s2"> has been recalled.`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="messagesaytextorcontactorfileorurllinkorminiprogram--promise-void">message.say(textOrContactOrFileOrUrlLinkOrMiniProgram) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Reply a Text, Contact Card, Media File or Link message to the sender.</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a> <strong>See</strong>: <a href="https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/ding-dong-bot.ts">Examples/ding-dong-bot</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">textOrContactOrFileOrUrlLinkOrMiniProgram</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code> | <code class="language-plaintext highlighter-rouge">Contact</code> | <code class="language-plaintext highlighter-rouge">FileBox</code> | <code class="language-plaintext highlighter-rouge">UrlLink</code> | <code class="language-plaintext highlighter-rouge">MiniProgram</code></td>
+      <td style="text-align: left">send text, Contact, UrlLink, MiniProgram or file to bot.   You can use <a href="https://www.npmjs.com/package/file-box">FileBox</a> to send file</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-2">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">FileBox</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">file-box</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span>
+  <span class="nx">Wechaty</span><span class="p">,</span>
+  <span class="nx">UrlLink</span><span class="p">,</span>
+  <span class="nx">MiniProgram</span><span class="p">,</span>
+<span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">m</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+<span class="c1">// 1. send Image</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="sr">/^ding$/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">text</span><span class="p">()))</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">fileBox</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nx">fromUrl</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://wechaty.github.io/wechaty/images/bot-qr-code.png</span><span class="dl">'</span><span class="p">)</span>
+    <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">fileBox</span><span class="p">)</span>
+  <span class="p">}</span>
+
+<span class="c1">// 2. send Text</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="sr">/^dong$/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">text</span><span class="p">()))</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">dingdingding</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+
+<span class="c1">// 3. send Contact</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="sr">/^lijiarui$/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">text</span><span class="p">()))</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">contactCard</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lijiarui</span><span class="dl">'</span><span class="p">})</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">contactCard</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">not found</span><span class="dl">'</span><span class="p">)</span>
+      <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">contactCard</span><span class="p">)</span>
+  <span class="p">}</span>
+
+<span class="c1">// 4. send UrlLink</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="sr">/^link$/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">text</span><span class="p">()))</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">urlLink</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UrlLink</span><span class="p">({</span>
+      <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Wechaty is a Bot SDK for Wechat Individual Account which can help you create a bot in 6 lines of javascript, with cross-platform support including Linux, Windows, Darwin(OSX/Mac) and Docker.</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">thumbnailUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://camo.githubusercontent.com/f310a2097d4aa79d6db2962fa42bb3bb2f6d43df/68747470733a2f2f6368617469652e696f2f776563686174792f696d616765732f776563686174792d6c6f676f2d656e2e706e67</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Wechaty</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://github.com/chatie/wechaty</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">});</span>
+
+    <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">urlLink</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="c1">// 5. send MiniProgram (only supported by `wechaty-puppet-macpro`)</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="sr">/^mini-program$/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">text</span><span class="p">()))</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">miniProgram</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MiniProgram</span> <span class="p">({</span>
+      <span class="na">appid</span>              <span class="p">:</span> <span class="dl">'</span><span class="s1">gh_0aa444a25adc</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">title</span>              <span class="p">:</span> <span class="dl">'</span><span class="s1">我正在使用Authing认证身份，你也来试试吧</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">pagePath</span>           <span class="p">:</span> <span class="dl">'</span><span class="s1">routes/explore.html</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">description</span>        <span class="p">:</span> <span class="dl">'</span><span class="s1">身份管家</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">thumbUrl</span>           <span class="p">:</span> <span class="dl">'</span><span class="s1">30590201000452305002010002041092541302033d0af802040b30feb602045df0c2c5042b777875706c6f61645f31373533353339353230344063686174726f6f6d3131355f313537363035393538390204010400030201000400</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">thumbKey</span>           <span class="p">:</span> <span class="dl">'</span><span class="s1">42f8609e62817ae45cf7d8fefb532e83</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">});</span>
+
+    <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">miniProgram</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="messagetype--messagetype">message.type() ⇒ <code class="language-plaintext highlighter-rouge">MessageType</code></h3>
+
+<p>Get the type from the message.</p>
+
+<blockquote>
+  <p>Tips: MessageType is Enum here. &lt;/br&gt;</p>
+
+  <ul>
+    <li>MessageType.Unknown</li>
+    <li>MessageType.Attachment</li>
+    <li>MessageType.Audio</li>
+    <li>MessageType.Contact</li>
+    <li>MessageType.Emoticon</li>
+    <li>MessageType.Image</li>
+    <li>MessageType.Text</li>
+    <li>MessageType.Video</li>
+    <li>MessageType.Url</li>
+  </ul>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">This is a text message</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="messageself--boolean">message.self() ⇒ <code class="language-plaintext highlighter-rouge">boolean</code></h3>
+
+<p>Check if a message is sent by self.</p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a> <strong>Returns</strong>: <code class="language-plaintext highlighter-rouge">boolean</code> - - Return <code class="language-plaintext highlighter-rouge">true</code> for send from self, <code class="language-plaintext highlighter-rouge">false</code> for send from others. <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nb">self</span><span class="p">())</span> <span class="p">{</span>
+ <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">this message is sent by myself!</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="messagemention--promise-contact-">message.mention() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact []&gt;</code></h3>
+
+<p>Get message mentioned contactList.</p>
+
+<p>Message event table as follows</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: center">Web</th>
+      <th style="text-align: center">Mac PC Client</th>
+      <th style="text-align: center">iOS Mobile</th>
+      <th style="text-align: center">android Mobile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">[You were mentioned] tip ([有人@我]的提示)</td>
+      <td style="text-align: center">✘</td>
+      <td style="text-align: center">√</td>
+      <td style="text-align: center">√</td>
+      <td style="text-align: center">√</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Identify magic code (8197) by copy &amp; paste in mobile</td>
+      <td style="text-align: center">✘</td>
+      <td style="text-align: center">√</td>
+      <td style="text-align: center">√</td>
+      <td style="text-align: center">✘</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Identify magic code (8197) by programming</td>
+      <td style="text-align: center">✘</td>
+      <td style="text-align: center">✘</td>
+      <td style="text-align: center">✘</td>
+      <td style="text-align: center">✘</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Identify two contacts with the same roomAlias by [You were  mentioned] tip</td>
+      <td style="text-align: center">✘</td>
+      <td style="text-align: center">✘</td>
+      <td style="text-align: center">√</td>
+      <td style="text-align: center">√</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a> <strong>Returns</strong>: <code class="language-plaintext highlighter-rouge">Promise &lt;Contact []&gt;</code> - - Return message mentioned contactList <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">contactList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nx">mention</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">contactList</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="messagementionself--promise-boolean">message.mentionSelf() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;boolean&gt;</code></h3>
+
+<p>Check if a message is mention self.</p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a> <strong>Returns</strong>: <code class="language-plaintext highlighter-rouge">Promise &lt;boolean&gt;</code> - - Return <code class="language-plaintext highlighter-rouge">true</code> for mention me. <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nx">mentionSelf</span><span class="p">())</span> <span class="p">{</span>
+ <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">this message were mentioned me! [You were mentioned] tip ([有人@我]的提示)</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="messageforwardto--promise-void">message.forward(to) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Forward the received message. This action doesn’t trigger the on-message events.</p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">to</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Sayable</code> | <code class="language-plaintext highlighter-rouge">Array</code></td>
+      <td style="text-align: left">Room or Contact The recipient of the message, the room, or the contact</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-3">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">m</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">})</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">m</span><span class="p">.</span><span class="nx">forward</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">forward this message to wechaty room!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="messagedate--date">message.date() ⇒ <code class="language-plaintext highlighter-rouge">Date</code></h3>
+
+<p>Message sent date</p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>
+
+<h3 id="messageage--number">message.age() ⇒ <code class="language-plaintext highlighter-rouge">number</code></h3>
+
+<p>Returns the message age in seconds.</p>
+
+<p>For example, the message is sent at time <code class="language-plaintext highlighter-rouge">8:43:01</code>, and when we received it in Wechaty, the time is <code class="language-plaintext highlighter-rouge">8:43:15</code>, then the age() will return <code class="language-plaintext highlighter-rouge">8:43:15 - 8:43:01 = 14 (seconds)</code></p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>
+
+<h3 id="messagefile"><del>message.file()</del></h3>
+
+<p><em><strong>Deprecated</strong></em></p>
+
+<p>use <a href="message.md#Message+toFileBox">toFileBox</a> instead</p>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>
+
+<h3 id="messagetofilebox--promise-filebox">message.toFileBox() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;FileBox&gt;</code></h3>
+
+<p>Extract the Media File from the Message, and put it into the FileBox.</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>
+
+<h3 id="messagetocontact--promise-contact">message.toContact() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact&gt;</code></h3>
+
+<p>Get Share Card of the Message Extract the Contact Card from the Message, and encapsulate it into Contact class</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>
+
+<h3 id="messagetourllink--promise-urllink">message.toUrlLink() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;UrlLink&gt;</code></h3>
+
+<p>Get Url Link of the Message Extract the Url Link from the Message, and encapsulate it into UrlLink class</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>
+
+<h3 id="messagefind--promise-message--null">Message.find() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Message | null&gt;</code></h3>
+
+<p>Find message in cache</p>
+
+<p><strong>Kind</strong>: static method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>
+
+<h3 id="messagefindall--promise-message-">Message.findAll() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Message []&gt;</code></h3>
+
+<p>Find messages in cache</p>
+
+<p><strong>Kind</strong>: static method of <a href="message.md#Message"><code class="language-plaintext highlighter-rouge">Message</code></a></p>

@@ -1,0 +1,82 @@
+<h2 id="what-is-wechaty">What is Wechaty</h2>
+
+<p><a href="https://github.com/Chatie/wechaty/">Wechaty</a> is a Wechat Bot SDK for Personal Account that lets you create software to extend the functionality of the Wechat, written in Node.js with TypeScript, Support all platforms including <a href="https://travis-ci.com/chatie/wechaty">Linux</a>, <a href="https://ci.appveyor.com/project/chatie/wechaty">Windows</a>, <a href="https://travis-ci.com/chatie/wechaty">Darwin(OSX/Mac)</a> and <a href="https://app.shippable.com/github/Chatie/wechaty">Docker</a>.</p>
+
+<p>You can use wechaty building a personal wechat chatbot in just 6 lines of JavaScript code!</p>
+
+<p>More Powerful Feature as follows:</p>
+
+<ul>
+  <li>Manage Message: Automatic message reply</li>
+  <li>Room Management: room creating/inviting/kicking off</li>
+  <li>Friendship Management</li>
+  <li>Intelligent dialogue Management: Just several configuration can get a task-oriented bot.</li>
+  <li>…</li>
+</ul>
+
+<p>See more in <a href="https://github.com/chatie/wechaty">Wechaty</a>
+<a href="https://badge.fury.io/js/wechaty"><img src="https://badge.fury.io/js/wechaty.svg" alt="NPM Version" /></a>
+<a href="https://hub.docker.com/r/wechaty/wechaty/"><img src="https://img.shields.io/docker/pulls/wechaty/wechaty.svg?maxAge=2592000" alt="Docker Pulls" /></a>
+<a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/&lt;%2F&gt;-TypeScript-blue.svg" alt="TypeScript" /></a></p>
+
+<h2 id="just-learning-about-wechaty">Just learning about Wechaty?</h2>
+
+<ul>
+  <li>First Period: Wechaty is based on web WeChat. <strong>All implement by web WeChat is fully open-source and free!</strong></li>
+  <li>Second Period: There are a lot of <a href="#web-wechat-limitation">limitations when using web WeChat</a>. In order to make it more easy for chatbot developers, we provide Puppet to support third party to implement their WeChat implementations, see WeChat Protocol.</li>
+</ul>
+
+<p>Take a look at our <a href="https://blog.chatie.io/wechaty-101-presentation/">Wechaty 101 Talk</a> which covers our core functionality, feature set and motivations behind the project.</p>
+
+<h2 id="web-wechat-limitations">Web WeChat Limitations</h2>
+
+<ol>
+  <li>WeChat Account that registered after 2017 mignt not be able to login Web Wechat, so it can not use PuppetPuppeteer with Wechaty. Please make sure your WeChat Account can be able to login by visiting <a href="https://wx.qq.com/">https://wx.qq.com</a></li>
+  <li>Web API can not create room and invite members to room since 2018.</li>
+</ol>
+
+<p>related issues:</p>
+
+<ul>
+  <li><a href="https://github.com/Chatie/wechaty/issues/603">Can not login with error message: 当前登录环境异常。为了你的帐号安全，暂时不能登录web微信。</a></li>
+  <li><a href="https://github.com/Chatie/wechaty/issues/990">[RUMOR] wechat will close web api for wechat</a></li>
+  <li><a href="https://github.com/Chatie/wechaty/issues/872">New account login issue</a></li>
+  <li><a href="https://github.com/chatie/wechaty-puppet-puppeteer">wechaty-puppet-puppeteer</a></li>
+</ul>
+
+<p>If you want to break the above limitations, please consider to use a Wechaty Puppet other than using Web API, like <a href="https://github.com/botorange/wechaty-puppet-padplus">wechaty-puppet-padplus</a>.</p>
+
+<p>Learn more about the Puppet at <a href="https://github.com/Chatie/wechaty/wiki/Puppet">Wechaty wiki: Puppet</a></p>
+
+<h2 id="curious-how-our-technology-works">Curious how our technology works?</h2>
+
+<p>We recommend <a href="https://blog.chatie.io/wechaty-the-bot-sdk/">reading the writeup</a> we did and checking out our <a href="https://github.com/Chatie/">Github repo</a>.</p>
+
+<h2 id="support-multi-wechat-protocols">Support Multi WeChat Protocols</h2>
+
+<p>The term <code class="language-plaintext highlighter-rouge">Puppet</code> in Wechaty is a name that we had picked up to describe part of our system: Puppet is an Abstract Class for implementing plugins, the plugins are the component that helps Wechaty to control the Wechat, that’s the reason we call it <code class="language-plaintext highlighter-rouge">puppet</code>.</p>
+
+<p>Plugins are named PuppetXXX, like PuppetPuppeteer is using the chrome puppeteer to control the WeChat Web API via a chrome browser, PuppetPadchat is using the WebSocket protocol to connect with a Protocol Server for controlling an iPad program. Here is the related information:</p>
+
+<ul>
+  <li>​<a href="puppet.md#2-wechaty-puppet-list">Full Puppet List</a></li>
+  <li>​<a href="puppet.md#3-wechaty-puppet-compatibility">Wechaty Puppet compatibility</a></li>
+</ul>
+
+<p>For a deeper understanding of the Puppet in Wechaty, you can read its source code if you like at <a href="https://github.com/Chatie/wechaty-puppet/blob/master/src/puppet.ts">https://github.com/Chatie/wechaty-puppet/blob/master/src/puppet.ts</a></p>
+
+<p>All implement by web WeChat is fully open-source and free, if you need other implement, you should apply for it, <a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty#wechaty-token-%E7%94%B3%E8%AF%B7%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%E5%92%8C%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">see HOW to get token</a>.</p>
+
+<p>Here is the whole image for wechaty puppet introduction:</p>
+
+<p><img src="../static/img/docs/architecture.png" alt="Puppet Structure" /></p>
+
+<h2 id="join-us">Join Us</h2>
+
+<blockquote>
+  <p>Scan the following QRCode, reply ‘‘wechaty” to join Wechaty Developers’ Home.</p>
+
+  <p>Please read the doc before you ask question in the group. We don’t welcome any discussion unrelated to wechaty, or you should give a red pocket(more than 100 RMB) in the group.</p>
+</blockquote>
+
+<p><img src="../static/img/friday-qrcode.svg" alt="Wechaty Developers' Home" /></p>

@@ -1,0 +1,155 @@
+<p>Bot itself will be encapsulated as a ContactSelf. This class is extends Contact.</p>
+
+<h2 id="contactself">ContactSelf</h2>
+
+<p>Bot itself will be encapsulated as a ContactSelf.</p>
+
+<blockquote>
+  <p>Tips: this class is extends Contact</p>
+</blockquote>
+
+<p><strong>Kind</strong>: global class</p>
+
+<ul>
+  <li><a href="contact-self.md#contactself">ContactSelf</a>
+    <ul>
+      <li><a href="contact-self.md#contactself">intance</a>
+        <ul>
+          <li><a href="contact-self.md#contactselfavatarfile-⇒-promise">contactSelf.avatar([file]) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void | FileBox&gt;</code></a></li>
+          <li><a href="contact-self.md#contactselfqrcode-⇒-promise">contactSelf.qrcode() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;string&gt;</code></a></li>
+          <li><a href="contact-self.md#contactselfsignaturesignature">contactSelf.signature(signature) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;string&gt;</code></a></li>
+          <li><a href="contact-self.md#contactselfname-⇒-promisestring">contactSelf.name([name]) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt; | string</code></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="contactselfavatarfile--promise-void--filebox">contactSelf.avatar([file]) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void | FileBox&gt;</code></h3>
+
+<p>GET / SET bot avatar</p>
+
+<p><strong>Kind</strong>: instance method of <a href="contact-self.md#ContactSelf"><code class="language-plaintext highlighter-rouge">ContactSelf</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">[file]</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FileBox</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong> <em>( GET the avatar for bot, return {Promise&lt;FileBox&gt;})</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Save avatar to local file like `1-name.jpg`</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`user </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> login`</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">file</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">user</span><span class="p">.</span><span class="nx">avatar</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">file</span><span class="p">.</span><span class="nx">name</span>
+  <span class="k">await</span> <span class="nx">file</span><span class="p">.</span><span class="nx">toFile</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Save bot avatar: </span><span class="p">${</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> with avatar file: </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(SET the avatar for a bot)</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">FileBox</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">file-box</span><span class="dl">'</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`user </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> login`</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">fileBox</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nx">fromUrl</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://wechaty.github.io/wechaty/images/bot-qr-code.png</span><span class="dl">'</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">user</span><span class="p">.</span><span class="nx">avatar</span><span class="p">(</span><span class="nx">fileBox</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Change bot avatar successfully!`</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="contactselfqrcode--promise-string">contactSelf.qrcode() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;string&gt;</code></h3>
+
+<p>Get bot qrcode</p>
+
+<p><strong>Kind</strong>: instance method of <a href="contact-self.md#ContactSelf"><code class="language-plaintext highlighter-rouge">ContactSelf</code></a></p>
+
+<h4 id="example">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">generate</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">qrcode-terminal</span><span class="dl">'</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`user </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> login`</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">qrcode</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">user</span><span class="p">.</span><span class="nx">qrcode</span><span class="p">()</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Following is the bot qrcode!`</span><span class="p">)</span>
+  <span class="nx">generate</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="p">{</span> <span class="na">small</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="contactselfsignaturesignature--promise-void">contactSelf.signature(signature) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Change bot signature</p>
+
+<p><strong>Kind</strong>: instance method of <a href="contact-self.md#ContactSelf"><code class="language-plaintext highlighter-rouge">ContactSelf</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">signature</td>
+      <td style="text-align: left">The new signature that the bot will change to</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-1">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`user </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> login`</span><span class="p">)</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">user</span><span class="p">.</span><span class="nx">signature</span><span class="p">(</span><span class="s2">`Signature changed by wechaty on </span><span class="p">${</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">change signature failed</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="contactselfnamename--promisevoid--string">contactSelf.name([name]) ⇒ <code class="language-plaintext highlighter-rouge">Promise&lt;void&gt; | string</code></h3>
+
+<p>Get or change bot name.</p>
+
+<p><strong>Kind</strong>: instance method of <a href="contact-self.md#contactself"><code class="language-plaintext highlighter-rouge">ContactSelf</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">[name]</td>
+      <td style="text-align: left">The new alias that the bot will change to</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-2">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`user </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> login`</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">oldName</span> <span class="o">=</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span> <span class="c1">// get bot name</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">oldName</span><span class="p">}</span><span class="s2">-</span><span class="p">${</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span> <span class="c1">// change bot name</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">change name failed</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>

@@ -1,0 +1,184 @@
+<p>Send, receive friend request, and friend confirmation events.</p>
+
+<h2 id="friendship">Friendship</h2>
+
+<p>Send, receive friend request, and friend confirmation events.</p>
+
+<ol>
+  <li>send request</li>
+  <li>receive request(in friend event)</li>
+  <li>confirmation friendship(friend event)</li>
+</ol>
+
+<p><a href="https://github.com/wechaty/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/friend-bot.ts">Examples/Friend-Bot</a></p>
+
+<p><strong>Kind</strong>: global class</p>
+
+<ul>
+  <li><a href="friendship.md#Friendship">Friendship</a>
+    <ul>
+      <li><em>instance</em>
+        <ul>
+          <li><a href="friendship.md#Friendship+accept">.accept()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="friendship.md#Friendship+hello">.hello()</a> ⇒ <code class="language-plaintext highlighter-rouge">string</code></li>
+          <li><a href="friendship.md#Friendship+contact">.contact()</a> ⇒ <code class="language-plaintext highlighter-rouge">Contact</code></li>
+          <li><a href="friendship.md#Friendship+type">.type()</a> ⇒ <code class="language-plaintext highlighter-rouge">FriendshipType</code></li>
+        </ul>
+      </li>
+      <li><em>static</em>
+        <ul>
+          <li><a href="friendship.md#Friendship.send"><del>.send()</del></a></li>
+          <li><a href="friendship.md#Friendship.add">.add(contact, hello)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="friendshipaccept--promise-void">friendship.accept() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Accept Friend Request</p>
+
+<p><strong>Kind</strong>: instance method of <a href="friendship.md#Friendship"><code class="language-plaintext highlighter-rouge">Friendship</code></a></p>
+
+<h4 id="example">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friendship</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">friendship</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`received friend event.`</span><span class="p">)</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">friendship</span><span class="p">.</span><span class="nx">type</span><span class="p">())</span> <span class="p">{</span>
+
+    <span class="c1">// 1. New Friend Request</span>
+
+    <span class="k">case</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Friendship</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="na">Receive</span><span class="p">:</span>
+      <span class="k">await</span> <span class="nx">friendship</span><span class="p">.</span><span class="nx">accept</span><span class="p">()</span>
+      <span class="k">break</span>
+
+    <span class="c1">// 2. Friend Ship Confirmed</span>
+
+    <span class="k">case</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Friendship</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="na">Confirm</span><span class="p">:</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`friend ship confirmed`</span><span class="p">)</span>
+      <span class="k">break</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="friendshiphello--string">friendship.hello() ⇒ <code class="language-plaintext highlighter-rouge">string</code></h3>
+
+<p>Get verify message from</p>
+
+<p><strong>Kind</strong>: instance method of <a href="friendship.md#Friendship"><code class="language-plaintext highlighter-rouge">Friendship</code></a><br />
+<strong>Example</strong> <em>(If request content is `ding`, then accept the friendship)</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friendship</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">friendship</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`received friend event from </span><span class="p">${</span><span class="nx">friendship</span><span class="p">.</span><span class="nx">contact</span><span class="p">().</span><span class="nx">name</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">friendship</span><span class="p">.</span><span class="nx">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Friendship</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Receive</span> <span class="o">&amp;&amp;</span> <span class="nx">friendship</span><span class="p">.</span><span class="nx">hello</span><span class="p">()</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">ding</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">friendship</span><span class="p">.</span><span class="nx">accept</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="friendshipcontact--contact">friendship.contact() ⇒ <code class="language-plaintext highlighter-rouge">Contact</code></h3>
+
+<p>Get the contact from friendship</p>
+
+<p><strong>Kind</strong>: instance method of <a href="friendship.md#Friendship"><code class="language-plaintext highlighter-rouge">Friendship</code></a></p>
+
+<h4 id="example-1">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friendship</span><span class="dl">'</span><span class="p">,</span> <span class="nx">friendship</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">friendship</span><span class="p">.</span><span class="nx">contact</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`received friend event from </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="friendshiptype--friendshiptype">friendship.type() ⇒ <code class="language-plaintext highlighter-rouge">FriendshipType</code></h3>
+
+<p>Return the Friendship Type</p>
+
+<blockquote>
+  <p>Tips: FriendshipType is enum here. &lt;/br&gt;</p>
+
+  <ul>
+    <li>FriendshipType.Unknown</li>
+    <li>FriendshipType.Confirm</li>
+    <li>FriendshipType.Receive</li>
+    <li>FriendshipType.Verify</li>
+  </ul>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="friendship.md#Friendship"><code class="language-plaintext highlighter-rouge">Friendship</code></a><br />
+<strong>Example</strong> <em>(If request content is `ding`, then accept the friendship)</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friendship</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">friendship</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">friendship</span><span class="p">.</span><span class="nx">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Friendship</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Receive</span> <span class="o">&amp;&amp;</span> <span class="nx">friendship</span><span class="p">.</span><span class="nx">hello</span><span class="p">()</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">ding</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">friendship</span><span class="p">.</span><span class="nx">accept</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="friendshipsend"><del>Friendship.send()</del></h3>
+
+<p><em><strong>Deprecated</strong></em></p>
+
+<p>use <a href="friendship.md#friendship-add-contact-hello-promise">Friendship#add</a> instead</p>
+
+<p><strong>Kind</strong>: static method of <a href="friendship.md#Friendship"><code class="language-plaintext highlighter-rouge">Friendship</code></a></p>
+
+<h3 id="friendshipaddcontact-hello--promise-void">Friendship.add(contact, hello) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Send a Friend Request to a <code class="language-plaintext highlighter-rouge">contact</code> with message <code class="language-plaintext highlighter-rouge">hello</code>.</p>
+
+<p>The best practice is to send friend request once per minute. Remeber not to do this too frequently, or your account may be blocked.</p>
+
+<p><strong>Kind</strong>: static method of <a href="friendship.md#Friendship"><code class="language-plaintext highlighter-rouge">Friendship</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">contact</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Contact</code></td>
+      <td style="text-align: left">Send friend request to contact</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">hello</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">The friend request content</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-2">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">memberList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">memberList</span><span class="p">()</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">memberList</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Friendship</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">member</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Nice to meet you! I am wechaty bot!</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>

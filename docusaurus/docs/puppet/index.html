@@ -1,0 +1,252 @@
+<p>The term <a href="https://github.com/wechaty/wechaty/wiki/Puppet">Puppet</a> in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat(that’s the reason we call it puppet).</p>
+
+<p>The plugins are named <code class="language-plaintext highlighter-rouge">PuppetXXX</code>, like <a href="https://github.com/wechaty/wechaty-puppet-puppeteer">PuppetPuppeteer</a> is using the <a href="https://github.com/GoogleChrome/puppeteer">google puppeteer</a> to control the <a href="https://wx.qq.com">WeChat Web API</a> via a chrome browser, <a href="https://github.com/lijiarui/wechaty-puppet-padchat">PuppetPadchat</a> is using the WebSocket protocol to connect with a Protocol Server for controlling the iPad Wechat program. More detail you could go <a href="https://github.com/wechaty/wechaty-puppet/wiki">Puppet in wiki</a>.</p>
+
+<p>For a deeper understanding of the Puppet in Wechaty, you can read its source code if you like at <a href="https://github.com/wechaty/wechaty-puppet/blob/master/src/puppet.ts">https://github.com/wechaty/wechaty-puppet/blob/master/src/puppet.ts</a></p>
+
+<p><img src="../static/img/docs/architecture.png" alt="Puppet Structure" /></p>
+
+<h2 id="2-wechaty-puppet-list">2. Wechaty Puppet List</h2>
+
+<h3 id="21-for-puppet-user">2.1. For Puppet User</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Wechaty Puppet</th>
+      <th style="text-align: left">Backend Protocol</th>
+      <th style="text-align: left">Npm Name</th>
+      <th style="text-align: left">Npm Version</th>
+      <th style="text-align: left">Stage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/wechaty/wechaty-puppet-puppeteer">PuppetPuppeteer</a></td>
+      <td style="text-align: left">Web API via Browser Hooking</td>
+      <td style="text-align: left">wechaty-puppet-puppeteer</td>
+      <td style="text-align: left"><img src="https://badge.fury.io/js/wechaty-puppet-puppeteer.svg" alt="PuppetPuppeteer" /> <a href="https://www.npmjs.com/package/wechaty-puppet-puppeteer?activeTab=versions"><img src="https://img.shields.io/npm/v/wechaty-puppet-puppeteer/next.svg" alt="npm (tag)" /></a></td>
+      <td style="text-align: left"><img src="https://img.shields.io/badge/Stage-Release-green.svg" alt="Stage:Release" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/lijiarui/wechaty-puppet-padchat">PuppetPadchat</a></td>
+      <td style="text-align: left">iPad Protocol</td>
+      <td style="text-align: left">wechaty-puppet-padchat</td>
+      <td style="text-align: left"><img src="https://badge.fury.io/js/wechaty-puppet-padchat.svg" alt="PuppetPadchat" />   <a href="https://www.npmjs.com/package/wechaty-puppet-padchat?activeTab=versions"><img src="https://img.shields.io/npm/v/wechaty-puppet-padchat/next.svg" alt="npm (tag)" /></a></td>
+      <td style="text-align: left"><img src="https://img.shields.io/badge/Stage-Release-green.svg" alt="Stage:Release" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/botorange/wechaty-puppet-padpro">PuppetPadpro</a></td>
+      <td style="text-align: left">iPad Protocol</td>
+      <td style="text-align: left">Enhance wechaty-puppet-padchat, see more <a href="https://github.com/wechaty/wechaty/issues/1668">issue1668</a></td>
+      <td style="text-align: left"><img src="https://badge.fury.io/js/wechaty-puppet-padpro.svg" alt="PuppetPadpro" />   <a href="https://www.npmjs.com/package/wechaty-puppet-padpro?activeTab=versions"><img src="https://img.shields.io/npm/v/wechaty-puppet-padpro.svg" alt="npm (tag)" /></a></td>
+      <td style="text-align: left"><img src="https://img.shields.io/badge/Stage-Release-green.svg" alt="Stage:Release" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/wechaty/wechaty-puppet-wechat4u">PuppetWechat4u</a></td>
+      <td style="text-align: left">Web API via HTTP</td>
+      <td style="text-align: left">wechaty-puppet-wechat4u</td>
+      <td style="text-align: left"><img src="https://badge.fury.io/js/wechaty-puppet-wechat4u.svg" alt="PuppetWechat4u" />   <a href="https://www.npmjs.com/package/wechaty-puppet-wechat4u?activeTab=versions"><img src="https://img.shields.io/npm/v/wechaty-puppet-wechat4u/next.svg" alt="npm (tag)" /></a></td>
+      <td style="text-align: left"><img src="https://img.shields.io/badge/Stage-Alpha-red.svg" alt="Stage:Release" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/botorange/wechaty-puppet-iosbird">PuppetIosbird</a></td>
+      <td style="text-align: left">iPhone Hook</td>
+      <td style="text-align: left">wechaty-puppet-iosbird</td>
+      <td style="text-align: left"><img src="https://badge.fury.io/js/wechaty-puppet-iosbird.svg" alt="PuppetIosbird" />   <a href="https://www.npmjs.com/package/wechaty-puppet-iosbird?activeTab=versions"><img src="https://img.shields.io/npm/v/wechaty-puppet-iosbird.svg" alt="npm (tag)" /></a></td>
+      <td style="text-align: left"><img src="https://img.shields.io/badge/Stage-Alpha-red.svg" alt="Stage:Release" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">TBW</td>
+      <td style="text-align: left">Android Hook</td>
+      <td style="text-align: left">Android</td>
+      <td style="text-align: left">0.0.0</td>
+      <td style="text-align: left"><img src="https://img.shields.io/badge/Stage-Plan-lightgrey.svg" alt="Stage:Release" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">TBW</td>
+      <td style="text-align: left">Win32 Hook</td>
+      <td style="text-align: left">Win32</td>
+      <td style="text-align: left">0.0.0</td>
+      <td style="text-align: left"><img src="https://img.shields.io/badge/Stage-Plan-lightgrey.svg" alt="Stage:Release" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="22-for-puppet-builder">2.2. For Puppet Builder</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Wechaty Puppet</th>
+      <th style="text-align: left">Backend Protocol</th>
+      <th style="text-align: left">Npm Name</th>
+      <th style="text-align: left">Npm Version</th>
+      <th style="text-align: left">Stage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/wechaty/wechaty-puppet">Puppet</a></td>
+      <td style="text-align: left">Abstract Base Class</td>
+      <td style="text-align: left">wechaty-puppet</td>
+      <td style="text-align: left"><img src="https://badge.fury.io/js/wechaty-puppet.svg" alt="Puppet" />   <a href="https://www.npmjs.com/package/wechaty-puppet?activeTab=versions"><img src="https://img.shields.io/npm/v/wechaty-puppet/next.svg" alt="npm (tag)" /></a></td>
+      <td style="text-align: left"><img src="https://img.shields.io/badge/Stage-Release-green.svg" alt="Stage:Release" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/wechaty/wechaty-puppet-mock">PuppetMock</a></td>
+      <td style="text-align: left">Mocking</td>
+      <td style="text-align: left">wechaty-puppet-mock</td>
+      <td style="text-align: left"><img src="https://badge.fury.io/js/wechaty-puppet-mock.svg" alt="PuppetMock" />   <a href="https://www.npmjs.com/package/wechaty-puppet-mock?activeTab=versions"><img src="https://img.shields.io/npm/v/wechaty-puppet-mock/next.svg" alt="npm (tag)" /></a></td>
+      <td style="text-align: left"><img src="https://img.shields.io/badge/Stage-Release-green.svg" alt="Stage:Release" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="3-wechaty-puppet-compatibility">3. Wechaty Puppet Compatibility</h2>
+
+<h3 id="31-puppet-contact-api">3.1 Puppet Contact API</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Contact API</th>
+      <th style="text-align: center">wechat4u &amp; puppeteer</th>
+      <th style="text-align: center">padchat</th>
+      <th style="text-align: center">Iosbird</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Permanent ContactPayload.id</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ContactPayload.friend</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">weixin()</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="32-puppet-message-api">3.2 Puppet Message API</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Message API</th>
+      <th style="text-align: center">wechat4u &amp; puppeteer</th>
+      <th style="text-align: center">padchat</th>
+      <th style="text-align: center">Iosbird</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">messageSendContact()</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center"><del>No</del></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">messageFile()</td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes for Image/Audio/Video No for other Attachments</td>
+      <td style="text-align: center">Yes for Image/Audio/Video/other Attachments/UrlLink</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">messageSendFile()</td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes for Image/Audio/Video No for other Attachments</td>
+      <td style="text-align: center">Yes for Image No for other Attachment</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">messageSendUrl()</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center"><del>No</del></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="33-puppet-room-api">3.3 Puppet Room API</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Room API</th>
+      <th style="text-align: center">wechat4u &amp; puppeteer</th>
+      <th style="text-align: center">padchat</th>
+      <th style="text-align: center">Iosbird</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Permanent RoomPayload.id</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">roomQrcode()</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">roomCreate()</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">roomAdd()</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">roomDel()</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">roomQuit()</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">roomAnnounce()</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center">Yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">roomPayload.owner</td>
+      <td style="text-align: center"><del>No</del></td>
+      <td style="text-align: center">Yes</td>
+      <td style="text-align: center"><del>No</del></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="4-learn-more">4. Learn More</h2>
+
+<p>Learn more about Wechaty Puppet at <a href="https://github.com/wechaty/wechaty-puppet/wiki">https://github.com/wechaty/wechaty-puppet/wiki</a></p>
+
+<ul>
+  <li>Repository: <a href="https://github.com/wechaty/wechaty-puppet">https://github.com/wechaty/wechaty-puppet</a></li>
+  <li>Documentation: <a href="https://wechaty.github.io/wechaty-puppet/typedoc/classes/puppet.html">https://wechaty.github.io/wechaty-puppet/typedoc/classes/puppet.html</a></li>
+  <li>Puppet Development Guide: <a href="https://github.com/wechaty/wechaty-puppet/wiki/Development">https://github.com/wechaty/wechaty-puppet/wiki/Development</a></li>
+  <li>Puppet Related Links: <a href="https://github.com/wechaty/wechaty-puppet/wiki/Links">https://github.com/wechaty/wechaty-puppet/wiki/Links</a></li>
+</ul>

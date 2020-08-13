@@ -1,0 +1,333 @@
+<blockquote>
+  <p>BREAKING NEWS: Wechaty logo color was changed from green to blue!</p>
+</blockquote>
+
+<p>There will be a <strong>migration guide from v0.14 to v0.16</strong> will be published on our blog later.</p>
+
+<h2 id="1-breaking-changes-">1. BREAKING CHANGES <a id="1-breaking-changes"></a></h2>
+
+<h3 id="11-class-removal-">1.1 Class Removal <a id="1-1-class-removal"></a></h3>
+
+<ul>
+  <li>BREAKING CHANGE: v0.16 will remove <code class="language-plaintext highlighter-rouge">MediaMessage</code> class <a href="https://github.com/wechaty/wechaty/issues/1164">#1164</a>​</li>
+  <li>BREAKING CHANGES v0.16: FriendRequest class will be replaced with Friendship <a href="https://github.com/wechaty/wechaty/issues/1312">#1312</a>​</li>
+  <li>BREAKING CHANGE v0.16 Contact, FriendRequest, Message, and Room classes will not be able to instantiate directly <a href="https://github.com/wechaty/wechaty/issues/1364">#1364</a>​</li>
+</ul>
+
+<h3 id="12-sync-to-async-">1.2. Sync to Async <a id="1-2-sync-to-async"></a></h3>
+
+<ul>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.topic()</code> change from Sycn to Async <a href="https://github.com/wechaty/wechaty/issues/1295">#1295</a>​</li>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.alias(contact)</code> change from Sycn to Async <a href="https://github.com/wechaty/wechaty/issues/1293">#1293</a>​</li>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.memberList()</code> change from Sycn to Async <a href="https://github.com/wechaty/wechaty/issues/1290">#1290</a>​</li>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.has(contact)</code> change from Sycn to Async <a href="https://github.com/wechaty/wechaty/issues/1289">#1289</a>​</li>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Message.mention()</code> change from <code class="language-plaintext highlighter-rouge">sync</code> to <code class="language-plaintext highlighter-rouge">async</code> <a href="https://github.com/wechaty/wechaty/issues/1259">#1259</a>​</li>
+  <li>BREAKING CHANGES: v0.16 <code class="language-plaintext highlighter-rouge">Room.member()</code> from <code class="language-plaintext highlighter-rouge">sync</code> to <code class="language-plaintext highlighter-rouge">async</code> <a href="https://github.com/wechaty/wechaty/issues/1258">#1258</a>​</li>
+</ul>
+
+<h3 id="13-argument--return-value-">1.3. Argument / Return Value <a id="1-3-argument-return-value"></a></h3>
+
+<ul>
+  <li>BREAKING CHANGE v0.16 room.add return Promise instead of return Promise <a href="https://github.com/wechaty/wechaty/issues/1362">#1362</a>​</li>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">scan</code> event args will be different! <a href="https://github.com/wechaty/wechaty/issues/1262">#1262</a>​</li>
+  <li>BREAKING CHANGE: first arg of <code class="language-plaintext highlighter-rouge">room-leave</code> event licener changed from <code class="language-plaintext highlighter-rouge">Contact</code> to <code class="language-plaintext highlighter-rouge">Contact[]</code> <a href="https://github.com/wechaty/wechaty/issues/723">#723</a>​</li>
+  <li>BREAKING CHANGE: v0.16 on(‘friend`) arguments changed! <a href="https://github.com/wechaty/wechaty/issues/1196">#1196</a>​</li>
+</ul>
+
+<h3 id="14-deprecated-">1.4. Deprecated <a id="1-4-deprecated"></a></h3>
+
+<ul>
+  <li>BREAKING CHANGE v0.16 Wechaty.self() eprecated, use Wechaty.userSelf() instead <a href="https://github.com/wechaty/wechaty/issues/1369">#1369</a>​</li>
+  <li>BREAKING CHANGE v0.16 Contact.personal() and Contact.official() deprecated, use Contact.type() instead <a href="https://github.com/wechaty/wechaty/issues/1366">#1366</a>​</li>
+  <li>BREAKING CHANGE: v0.16 will replace <code class="language-plaintext highlighter-rouge">Message.content()</code> with <code class="language-plaintext highlighter-rouge">Message.text()</code> <a href="https://github.com/wechaty/wechaty/issues/1163">#1163</a>​</li>
+</ul>
+
+<h2 id="2-new-features-">2. New Features <a id="2-new-features"></a></h2>
+
+<ul>
+  <li>feat: Add <code class="language-plaintext highlighter-rouge">for await (const contact of room) {}</code> support by ES6 iterators override <a href="https://github.com/wechaty/wechaty/issues/1198">#1198</a>​</li>
+  <li>[todo] allow Wechaty to be multi-instance <a href="https://github.com/wechaty/wechaty/issues/518">#518</a>​</li>
+  <li>[New Puppet] Plan to support <code class="language-plaintext highlighter-rouge">WECHATY_HEAD=WECHAT4U</code> <a href="https://github.com/wechaty/wechaty/issues/69">#69</a>​</li>
+  <li>TravisCI Conditional Deployment <a href="https://github.com/wechaty/wechaty/issues/1211">#1211</a>​</li>
+  <li>Puppet padchat <a href="https://github.com/wechaty/wechaty/pull/1245">#1245</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>Multi-Instance Support <a href="https://github.com/wechaty/wechaty/pull/1159">#1159</a> (<a href="https://github.com/zixia">zixia</a>)</li>
+</ul>
+
+<h2 id="3-bug-fixes-">3. Bug Fixes <a id="3-bug-fixes"></a></h2>
+
+<ul>
+  <li>Update the peerDependencies of <code class="language-plaintext highlighter-rouge">rx-queue</code>: rxjs@6 from rxjs@5 <a href="https://github.com/wechaty/wechaty/issues/1205">#1205</a>​</li>
+  <li>How to avoid the memory leak <a href="https://github.com/wechaty/wechaty/issues/981">#981</a>​</li>
+  <li>Should throw Exception when there have API Error. <a href="https://github.com/wechaty/wechaty/issues/683">#683</a>​</li>
+</ul>
+
+<h2 id="4-enhancements-">4. Enhancements <a id="4-enhancements"></a></h2>
+
+<ul>
+  <li>Prevent the Floating Promise in the Async/Await Code <a href="https://github.com/wechaty/wechaty/issues/1346">#1346</a>​</li>
+  <li>Upgrade Docker Base Image from Ubuntu 17.10 to 18.04 <a href="https://github.com/wechaty/wechaty/issues/1239">#1239</a>​</li>
+  <li>Continious Deploy to NPM with @next tag when the MINOR version number is odd(in developing branch) <a href="https://github.com/wechaty/wechaty/issues/1158">#1158</a>​</li>
+  <li>Should throw Exception when there have API Error. <a href="https://github.com/wechaty/wechaty/issues/683">#683</a>​</li>
+  <li>Decouple: Make <code class="language-plaintext highlighter-rouge">Contact</code>, <code class="language-plaintext highlighter-rouge">Room</code>, <code class="language-plaintext highlighter-rouge">Message</code>, and <code class="language-plaintext highlighter-rouge">FriendRequest</code> class Abstract. <a href="https://github.com/wechaty/wechaty/pull/1160">#1160</a> (<a href="https://github.com/zixia">zixia</a>)</li>
+  <li>Update to node 10 in .travis.yml <a href="https://github.com/wechaty/wechaty/pull/1231">#1231</a> (<a href="https://github.com/zixia">zixia</a>)</li>
+</ul>
+
+<p>Learn more between version at:</p>
+
+<ul>
+  <li>​<a href="https://github.com/wechaty/wechaty/blob/master/CHANGELOG.md">Full Changelog</a>​</li>
+  <li>​<a href="https://github.com/wechaty/wechaty/tree/v0.16.0">Source Code of Wechaty v0.16</a> (2018-06-21)</li>
+  <li>​<a href="https://github.com/wechaty/wechaty/compare/v0.14.0...v0.16.0">Commits Between v0.14 and v0.16</a>​</li>
+</ul>
+
+<h3 id="v014---minor-bug-fixes-">v0.14 - Minor Bug Fixes <a id="v-0-14-minor-bug-fixes"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.14.0">v0.14.0</a> release this on 2018-04-15, 1161 commits to master since this release</p>
+
+<h3 id="v012---all-about-refactoring-">v0.12 - All About Refactoring <a id="v-0-12-all-about-refactoring"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.12.0">v0.12.0</a> release this on 2017-10-31, 1475 commits to master since this release</p>
+
+<h3 id="v09---huge-improvements-with-lots-of-bug-fixes-and-feature-enhancements-">v0.9 - Huge Improvements with lots of Bug Fixes and Feature Enhancements <a id="v-0-9-huge-improvements-with-lots-of-bug-fixes-and-feature-enhancements"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.9.0">v0.9.0</a> release this on 2017-10-04, 1722 commits to master since this release</p>
+
+<h3 id="v07---a-brand-new-version-for-production-">v0.7 - A Brand New Version for Production <a id="v-0-7-a-brand-new-version-for-production"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.7.0">v0.7.0</a> release this on 2016-12-29, 3041 commits to master since this release</p>
+
+<h3 id="v06---devops-cicd-with-dockernpm-">v0.6 - DevOps CI/CD with Docker&amp;NPM <a id="v-0-6-devops-ci-cd-with-docker-and-npm"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.6.0">v0.6.0</a> release this on 2016-11-11, 3359 commits to master since this release</p>
+
+<h3 id="v0522---enhanced-media-message--docker-">v0.5.22 - Enhanced Media Message &amp; Docker <a id="v-0-5-22-enhanced-media-message-and-docker"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.5.22">v0.5.22</a> release this on 2016-11-10, 3378 commits to master since this release</p>
+
+<h3 id="v059---1st-recommend-version-for-docker-image--npm-module-">v0.5.9 - 1st Recommend Version for Docker Image &amp; NPM Module <a id="v-0-5-9-1st-recommend-version-for-docker-image-and-npm-module"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.5.9">v0.5.9</a> release this on 2016-11-07, 3431 commits to master since this release</p>
+
+<h3 id="v051---the-first-typescript-version-with-fully-dockerized-runtime-support-">v0.5.1 - The first TypeScript version with fully dockerized runtime support <a id="v-0-5-1-the-first-typescript-version-with-fully-dockerized-runtime-support"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.5.1">v0.5.1</a> release this on 2016-11-03, 3573 commits to master since this release</p>
+
+<h3 id="v040---supported-room-operate--friend-request-with-cloud-manager-backend-">v0.4.0 - Supported Room Operate &amp; Friend Request, with Cloud Manager Backend. <a id="v-0-4-0-supported-room-operate-and-friend-request-with-cloud-manager-backend"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.4.0">v0.4.0</a> release this on 2016-10-10, 3848 commits to master since this release</p>
+
+<h3 id="v020---cloudify-wechaty-start-manage-your-bot-on-httpschatieio-">v0.2.0 - Cloudify Wechaty: Start manage your bot on <a href="https://chatie.io/">https://chatie.io</a>​ <a id="v-0-2-0-cloudify-wechaty-start-manage-your-bot-on-https-chatie-io"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.2.0">v0.2.0</a> release this on 2016-06-29, 4315 commits to master since this release</p>
+
+<h3 id="v011---saverestore-wechat-session-">v0.1.1 - Save/Restore Wechat Session <a id="v-0-1-1-save-restore-wechat-session"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.1.1">v0.1.1</a> release this on 2016-06-10, 4450 commits to master since this release</p>
+
+<h3 id="v011---perfect-worked-base-on-chrome-">v0.1.1 - Perfect worked base on chrome <a id="v-0-1-1-perfect-worked-base-on-chrome"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.0.6">v0.0.6</a> release this on 2016-05-16, 4541 commits to master since this release</p>
+
+<h3 id="v005---wechaty-baby-born-">v0.0.5 - Wechaty baby born! <a id="v-0-0-5-wechaty-baby-born"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/releases/tag/v0.0.5">v0.0.5</a> release this on 2016-05-11, 4580 commits to master since this release</p>
+
+<p>See more in <a href="https://github.com/wechaty/wechaty/releases">releases</a>​</p>
+
+<h2 id="changelog-">CHANGELOG <a id="changelog"></a></h2>
+
+<h3 id="v0160-2018-06-21-">v0.16.0 2018-06-21 <a id="v-0-16-0-2018-06-21"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.16.0">v0.16.0</a> (2018-06-21)<a href="https://github.com/wechaty/wechaty/compare/v0.14.0...v0.16.0">Full Changelog</a>​</p>
+
+<p><strong>Implemented enhancements:</strong></p>
+
+<ul>
+  <li>Unable to start multiple instances with padchat puppet <a href="https://github.com/wechaty/wechaty/issues/1367">#1367</a>​</li>
+  <li>Prevent the Floating Promise in the Async/Await Code <a href="https://github.com/wechaty/wechaty/issues/1346">#1346</a>​</li>
+  <li>BREAKING CHANGES v0.16: FriendRequest class will be replaced with Friendship <a href="https://github.com/wechaty/wechaty/issues/1312">#1312</a>​</li>
+  <li>feat: PuppetPadchat can set avatar for userself support. <a href="https://github.com/wechaty/wechaty/issues/1298">#1298</a>​</li>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.topic\(\)</code> change from Sycn to Async <a href="https://github.com/wechaty/wechaty/issues/1295">#1295</a>​</li>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.alias\(contact\)</code> change from Sycn to Async <a href="https://github.com/wechaty/wechaty/issues/1293">#1293</a>​</li>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.memberList\(\)</code> change from Sycn to Async <a href="https://github.com/wechaty/wechaty/issues/1290">#1290</a>​</li>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.has\(contact\)</code> change from Sycn to Async <a href="https://github.com/wechaty/wechaty/issues/1289">#1289</a>​</li>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">scan</code> event args will be different! <a href="https://github.com/wechaty/wechaty/issues/1262">#1262</a>​</li>
+  <li>BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Message.mention\(\)</code> change from <code class="language-plaintext highlighter-rouge">sync</code> to <code class="language-plaintext highlighter-rouge">async</code> <a href="https://github.com/wechaty/wechaty/issues/1259">#1259</a>​</li>
+  <li>BREAKING CHANGES: v0.16 <code class="language-plaintext highlighter-rouge">Room.member\(\)</code> from <code class="language-plaintext highlighter-rouge">sync</code> to <code class="language-plaintext highlighter-rouge">async</code> <a href="https://github.com/wechaty/wechaty/issues/1258">#1258</a>​</li>
+  <li>Promote <code class="language-plaintext highlighter-rouge">Profile</code> class to a solo NPM module: <code class="language-plaintext highlighter-rouge">MemoryCard</code> <a href="https://github.com/wechaty/wechaty/issues/1257">#1257</a>​</li>
+  <li>rewrite roomFindAll() <a href="https://github.com/wechaty/wechaty/issues/1255">#1255</a>​</li>
+  <li>function friendRequestAccept <a href="https://github.com/wechaty/wechaty/issues/1254">#1254</a>​</li>
+  <li>read messageRawPayload by id <a href="https://github.com/wechaty/wechaty/issues/1253">#1253</a>​</li>
+  <li>function friendRequestSend <a href="https://github.com/wechaty/wechaty/issues/1252">#1252</a>​</li>
+  <li>rewrite contactFindAll() <a href="https://github.com/wechaty/wechaty/issues/1251">#1251</a>​</li>
+  <li>Upgrade Docker Base Image from Ubuntu 17.10 to 18.04 <a href="https://github.com/wechaty/wechaty/issues/1239">#1239</a>​</li>
+  <li>NPM Switch: <code class="language-plaintext highlighter-rouge">promise-retry</code> to replace <code class="language-plaintext highlighter-rouge">retry-promise</code> <a href="https://github.com/wechaty/wechaty/issues/1235">#1235</a>​</li>
+  <li>Add unit test to puppet accessory <a href="https://github.com/wechaty/wechaty/issues/1219">#1219</a>​</li>
+  <li>Use browser implementation of Node.js’ stream library <a href="https://github.com/wechaty/wechaty/issues/1201">#1201</a>​</li>
+  <li>feat: Add <code class="language-plaintext highlighter-rouge">for await \(const contact of room\) {}</code> support by ES6 iterators override <a href="https://github.com/wechaty/wechaty/issues/1198">#1198</a>​</li>
+  <li>BREAKING CHANGE: v0.16 on(‘friend`) arguments changed! <a href="https://github.com/wechaty/wechaty/issues/1196">#1196</a>​</li>
+  <li>TypeScript Strict Mode: set <code class="language-plaintext highlighter-rouge">noImplicitAny</code> to <code class="language-plaintext highlighter-rouge">true</code> <a href="https://github.com/wechaty/wechaty/issues/1180">#1180</a>​</li>
+  <li>Generic for Return Child Class Type in Abstract Class Implementation <a href="https://github.com/wechaty/wechaty/issues/1178">#1178</a>​</li>
+  <li>BREAKING CHANGE: v0.16 Message.ext() return ‘.ext’ instead of ‘ext’ before <a href="https://github.com/wechaty/wechaty/issues/1168">#1168</a>​</li>
+  <li>Encapsulated <code class="language-plaintext highlighter-rouge">Contact</code>, <code class="language-plaintext highlighter-rouge">Messag</code>, <code class="language-plaintext highlighter-rouge">FriendRequest</code>, and <code class="language-plaintext highlighter-rouge">Room</code> into <code class="language-plaintext highlighter-rouge">PuppetWeb</code> <a href="https://github.com/wechaty/wechaty/issues/1166">#1166</a>​</li>
+  <li>BREAKING CHANGE: v0.16 will remove <code class="language-plaintext highlighter-rouge">MediaMessage</code> class <a href="https://github.com/wechaty/wechaty/issues/1164">#1164</a>​</li>
+  <li>BREAKING CHANGE: v0.16 will replace <code class="language-plaintext highlighter-rouge">Message.content\(\)</code> with <code class="language-plaintext highlighter-rouge">Message.text\(\)</code> <a href="https://github.com/wechaty/wechaty/issues/1163">#1163</a>​</li>
+  <li>Continious Deploy to NPM with @next tag when the MINOR version number is odd(in developing branch) <a href="https://github.com/wechaty/wechaty/issues/1158">#1158</a>​</li>
+  <li>BREAKING CHANGE: first arg of <code class="language-plaintext highlighter-rouge">room-leave</code> event licener changed from <code class="language-plaintext highlighter-rouge">Contact</code> to <code class="language-plaintext highlighter-rouge">Contact\[\]</code> <a href="https://github.com/wechaty/wechaty/issues/723">#723</a>​</li>
+  <li>Should throw Exception when there have API Error. <a href="https://github.com/wechaty/wechaty/issues/683">#683</a>​</li>
+  <li>delay time for all function(method) that calls Tencent API <a href="https://github.com/wechaty/wechaty/issues/596">#596</a>​</li>
+  <li>[todo] allow Wechaty to be multi-instance <a href="https://github.com/wechaty/wechaty/issues/518">#518</a>​</li>
+  <li>[New Puppet] Plan to support <code class="language-plaintext highlighter-rouge">WECHATY\_HEAD=WECHAT4U</code> <a href="https://github.com/wechaty/wechaty/issues/69">#69</a>​</li>
+  <li>Decouple: Make <code class="language-plaintext highlighter-rouge">Contact</code>, <code class="language-plaintext highlighter-rouge">Room</code>, <code class="language-plaintext highlighter-rouge">Message</code>, and <code class="language-plaintext highlighter-rouge">FriendRequest</code> class Abstract. <a href="https://github.com/wechaty/wechaty/pull/1160">#1160</a> (<a href="https://github.com/zixia">zixia</a>)</li>
+</ul>
+
+<p><strong>Fixed bugs:</strong></p>
+
+<ul>
+  <li>When bot quit the room, bot still thought it in the room. <a href="https://github.com/wechaty/wechaty/issues/1345">#1345</a>​</li>
+  <li>When the bot remove one out of the group, room data didn’t refresh <a href="https://github.com/wechaty/wechaty/issues/1343">#1343</a>​</li>
+  <li>Room Event cannot work as expect after create a new room <a href="https://github.com/wechaty/wechaty/issues/1342">#1342</a>​</li>
+  <li>cannot refresh room data when execute the code again <a href="https://github.com/wechaty/wechaty/issues/1339">#1339</a>​</li>
+  <li>can’t run demo <a href="https://github.com/wechaty/wechaty/issues/1337">#1337</a>​</li>
+  <li>room-leave error <a href="https://github.com/wechaty/wechaty/issues/1334">#1334</a>​</li>
+  <li>room-join event, when run <code class="language-plaintext highlighter-rouge">room.say</code>, it actually run <code class="language-plaintext highlighter-rouge">contact.say</code> <a href="https://github.com/wechaty/wechaty/issues/1330">#1330</a>​</li>
+  <li>room-leave event cannot get leaver member <a href="https://github.com/wechaty/wechaty/issues/1329">#1329</a>​</li>
+  <li>should refresh room data when there is a room event <a href="https://github.com/wechaty/wechaty/issues/1328">#1328</a>​</li>
+  <li>[room topic event] throw error: no changerId found <a href="https://github.com/wechaty/wechaty/issues/1326">#1326</a>​</li>
+  <li>room-join cannot get member <a href="https://github.com/wechaty/wechaty/issues/1324">#1324</a>​</li>
+  <li><code class="language-plaintext highlighter-rouge">contact.avatar\(\)</code> cannot work as expect <a href="https://github.com/wechaty/wechaty/issues/1321">#1321</a>​</li>
+  <li>run contact-bot throw error <a href="https://github.com/wechaty/wechaty/issues/1319">#1319</a>​</li>
+  <li>Padchat: WXAutoLogin result is faild, but I still receive message <a href="https://github.com/wechaty/wechaty/issues/1316">#1316</a>​</li>
+  <li>Fix the <code class="language-plaintext highlighter-rouge">+</code> in data for PuppetPadchat <a href="https://github.com/wechaty/wechaty/issues/1302">#1302</a>​</li>
+  <li>get fromId not right for room invitation sys message <a href="https://github.com/wechaty/wechaty/issues/1297">#1297</a>​</li>
+  <li>Error: The command “echo $TRAVIS_OS_NAME” exited with 1. <a href="https://github.com/wechaty/wechaty/issues/1236">#1236</a>​</li>
+  <li>TravisCI Conditional Deployment <a href="https://github.com/wechaty/wechaty/issues/1211">#1211</a>​</li>
+  <li>Update the peerDependencies of <code class="language-plaintext highlighter-rouge">rx-queue</code>: rxjs@6 from rxjs@5 <a href="https://github.com/wechaty/wechaty/issues/1205">#1205</a>​</li>
+  <li>Cannot send image message on v0.15.21 <a href="https://github.com/wechaty/wechaty/issues/1175">#1175</a>​</li>
+  <li>cannot refresh room topic or contact name <a href="https://github.com/wechaty/wechaty/issues/1157">#1157</a>​</li>
+  <li>How to avoid the memory leak <a href="https://github.com/wechaty/wechaty/issues/981">#981</a>​</li>
+  <li>Puppeteer Navigation Timeout Exceeded: 30000ms exceeded <a href="https://github.com/wechaty/wechaty/issues/870">#870</a>​</li>
+  <li>SyntaxError: Unexpected end of JSON input <a href="https://github.com/wechaty/wechaty/issues/846">#846</a>​</li>
+  <li>function <code class="language-plaintext highlighter-rouge">Message.mention\(\)</code> should recognize both magic code and blank <a href="https://github.com/wechaty/wechaty/issues/813">#813</a>​</li>
+  <li>BREAKING CHANGE: first arg of <code class="language-plaintext highlighter-rouge">room-leave</code> event licener changed from <code class="language-plaintext highlighter-rouge">Contact</code> to <code class="language-plaintext highlighter-rouge">Contact\\[\\]</code> <a href="https://github.com/wechaty/wechaty/issues/723">#723</a>​</li>
+  <li>Should throw Exception when there have API Error. <a href="https://github.com/wechaty/wechaty/issues/683">#683</a>​</li>
+</ul>
+
+<p><strong>Closed issues:</strong></p>
+
+<ul>
+  <li>BREAKING CHANGE v0.16 Wechaty.self() eprecated, use Wechaty.userSelf() instead <a href="https://github.com/wechaty/wechaty/issues/1369">#1369</a>​</li>
+  <li>BREAKING CHANGE v0.16 Contact.personal() and Contact.official() deprecated, use Contact.type() instead <a href="https://github.com/wechaty/wechaty/issues/1366">#1366</a>​</li>
+  <li>no encodedText error in <code class="language-plaintext highlighter-rouge">padchat-decode.ts</code> <a href="https://github.com/wechaty/wechaty/issues/1365">#1365</a>​</li>
+  <li>BREAKING CHANGE v0.16 Contact, FriendRequest, Message, and Room classes will not be able to instantiate directly <a href="https://github.com/wechaty/wechaty/issues/1364">#1364</a>​</li>
+  <li>BREAKING CHANGE v0.16 room.add return Promise instead of return Promise <a href="https://github.com/wechaty/wechaty/issues/1362">#1362</a>​</li>
+  <li><code class="language-plaintext highlighter-rouge">media-file-bot</code> cannot save xlsx file <a href="https://github.com/wechaty/wechaty/issues/1349">#1349</a>​</li>
+  <li>room-leave-error <a href="https://github.com/wechaty/wechaty/issues/1335">#1335</a>​</li>
+  <li>room-leave event throw error, cannot get leaver contact <a href="https://github.com/wechaty/wechaty/issues/1323">#1323</a>​</li>
+  <li><code class="language-plaintext highlighter-rouge">friendship</code> cannot accept friend request automatically <a href="https://github.com/wechaty/wechaty/issues/1322">#1322</a>​</li>
+  <li>PadchatRpc WXCheckQRCode result: {“message”:”WS请求错误”,”status”:-19} <a href="https://github.com/wechaty/wechaty/issues/1315">#1315</a>​</li>
+  <li>m.forward 是 undefined ？ <a href="https://github.com/wechaty/wechaty/issues/1272">#1272</a>​</li>
+  <li>Navigation Timeout Exceeded: 30000ms exceeded <a href="https://github.com/wechaty/wechaty/issues/1248">#1248</a>​</li>
+  <li>profile.set can only set ‘cookies’ instead of other keys <a href="https://github.com/wechaty/wechaty/issues/1240">#1240</a>​</li>
+  <li>Create a websocket ipad demo <a href="https://github.com/wechaty/wechaty/issues/1228">#1228</a>​</li>
+  <li>Proper wechaty and its dependency installation <a href="https://github.com/wechaty/wechaty/issues/1225">#1225</a>​</li>
+  <li>can’t run the typescript examples <a href="https://github.com/wechaty/wechaty/issues/1221">#1221</a>​</li>
+  <li>Scan QR Code not shown on terminal, wechaty@0.14.4 <a href="https://github.com/wechaty/wechaty/issues/1220">#1220</a>​</li>
+  <li>请问怎么添加微信群中的人当做自己的好友呢 有例子可以参考吗 <a href="https://github.com/wechaty/wechaty/issues/1207">#1207</a>​</li>
+  <li>room-bot.ts error <a href="https://github.com/wechaty/wechaty/issues/1199">#1199</a>​</li>
+  <li>TypeScript 2.9 with trailing comma after rest parameters. <a href="https://github.com/wechaty/wechaty/issues/1188">#1188</a>​</li>
+  <li>code example ‘media-file-bot’ not working <a href="https://github.com/wechaty/wechaty/issues/1183">#1183</a>​</li>
+  <li>QrCode <code class="language-plaintext highlighter-rouge">scan</code> event not refresh on v0.15.21 #1175 <a href="https://github.com/wechaty/wechaty/issues/1176">#1176</a>​</li>
+  <li>Version 10 of node.js has been released <a href="https://github.com/wechaty/wechaty/issues/1170">#1170</a>​</li>
+  <li>自动加好友，加好友成功后，向对方发信息报错 <a href="https://github.com/wechaty/wechaty/issues/1165">#1165</a>​</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">injection-js</code> for Wechaty v1.0 provide the resolvers of the Wechaty Puppet <a href="https://github.com/wechaty/wechaty/issues/1146">#1146</a>​</li>
+  <li>findAll ,WARN Room parse() on a empty rawObj <a href="https://github.com/wechaty/wechaty/issues/1141">#1141</a>​</li>
+  <li>Rename all <code class="language-plaintext highlighter-rouge">find\(\)</code> method to <code class="language-plaintext highlighter-rouge">search\(\)</code> <a href="https://github.com/wechaty/wechaty/issues/1132">#1132</a>​</li>
+  <li>ERR PuppetWebBridge init() exception: Error: connect ECONNREFUSED 127.0.0.1:35493 <a href="https://github.com/wechaty/wechaty/issues/1113">#1113</a>​</li>
+  <li>Feature request: sending file with a stream (creating media message with a stream) <a href="https://github.com/wechaty/wechaty/issues/1092">#1092</a>​</li>
+  <li>node_modules/_wechaty@0.13.36@wechaty/dist/src/config.d.ts(1,24): error TS2307: Cannot find module ‘raven’. <a href="https://github.com/wechaty/wechaty/issues/1035">#1035</a>​</li>
+</ul>
+
+<p><strong>Merged pull requests:</strong></p>
+
+<ul>
+  <li>add await for promise <a href="https://github.com/wechaty/wechaty/pull/1375">#1375</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>Fix room.add() failed when room member more than 40 <a href="https://github.com/wechaty/wechaty/pull/1374">#1374</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>call randam server for stable <a href="https://github.com/wechaty/wechaty/pull/1373">#1373</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>check room valid by id <a href="https://github.com/wechaty/wechaty/pull/1352">#1352</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>fixed cannot find room by topic after bot create room <a href="https://github.com/wechaty/wechaty/pull/1351">#1351</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>fix warnings when run <code class="language-plaintext highlighter-rouge">npm run lint</code> <a href="https://github.com/wechaty/wechaty/pull/1348">#1348</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>test <code class="language-plaintext highlighter-rouge">room.quit\(\)</code> in room-bot <a href="https://github.com/wechaty/wechaty/pull/1347">#1347</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>add log as #1342 <a href="https://github.com/wechaty/wechaty/pull/1344">#1344</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>Bug compatible WXCreateChatRoom <a href="https://github.com/wechaty/wechaty/pull/1341">#1341</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>add room-bot test code <a href="https://github.com/wechaty/wechaty/pull/1338">#1338</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>save room join sys message to cache <a href="https://github.com/wechaty/wechaty/pull/1333">#1333</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>add function in self-testing-bot.ts <a href="https://github.com/wechaty/wechaty/pull/1331">#1331</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>Room bot example <a href="https://github.com/wechaty/wechaty/pull/1325">#1325</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>add room join event unit test <a href="https://github.com/wechaty/wechaty/pull/1318">#1318</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>add function friendRequestSend <a href="https://github.com/wechaty/wechaty/pull/1313">#1313</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>add room event <a href="https://github.com/wechaty/wechaty/pull/1308">#1308</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>add raw dirty rpc function <a href="https://github.com/wechaty/wechaty/pull/1283">#1283</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>Puppet 0602 <a href="https://github.com/wechaty/wechaty/pull/1282">#1282</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>chore(package): update @types/node to version 10.3.0 <a href="https://github.com/wechaty/wechaty/pull/1274">#1274</a> (<a href="https://github.com/zixia">zixia</a>)</li>
+  <li>fix(package): update memory-card to version 0.2.0 <a href="https://github.com/wechaty/wechaty/pull/1273">#1273</a> (<a href="https://github.com/zixia">zixia</a>)</li>
+  <li>Puppet 0602 <a href="https://github.com/wechaty/wechaty/pull/1271">#1271</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>chore(package): update rx-queue to version 0.4.19 <a href="https://github.com/wechaty/wechaty/pull/1260">#1260</a> (<a href="https://github.com/zixia">zixia</a>)</li>
+  <li>New puppet padchat <a href="https://github.com/wechaty/wechaty/pull/1256">#1256</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>add more functions <a href="https://github.com/wechaty/wechaty/pull/1246">#1246</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>Puppet padchat <a href="https://github.com/wechaty/wechaty/pull/1245">#1245</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>chore(package): update ts-node to version 6.0.5 <a href="https://github.com/wechaty/wechaty/pull/1232">#1232</a> (<a href="https://github.com/zixia">zixia</a>)</li>
+  <li>Update to node 10 in .travis.yml <a href="https://github.com/wechaty/wechaty/pull/1231">#1231</a> (<a href="https://github.com/zixia">zixia</a>)</li>
+  <li>fix(package): update rx-queue to version 0.4.4 <a href="https://github.com/wechaty/wechaty/pull/1190">#1190</a> (<a href="https://github.com/zixia">zixia</a>)</li>
+  <li>Multi-Instance Support <a href="https://github.com/wechaty/wechaty/pull/1159">#1159</a> (<a href="https://github.com/zixia">zixia</a>)</li>
+</ul>
+
+<h3 id="v0140-2018-04-15-">v0.14.0 2018-04-15 <a id="v-0-14-0-2018-04-15"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.14.0">v0.14.0</a> (2018-04-15)<a href="https://github.com/wechaty/wechaty/compare/v0.12.0...v0.14.0">Full Changelog</a>​</p>
+
+<h3 id="v0120-2017-10-30-">v0.12.0 2017-10-30 <a id="v-0-12-0-2017-10-30"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.12.0">v0.12.0</a> (2017-10-30)<a href="https://github.com/wechaty/wechaty/compare/v0.9.0...v0.12.0">Full Changelog</a>​</p>
+
+<h3 id="v090-2017-10-04-">v0.9.0 2017-10-04 <a id="v-0-9-0-2017-10-04"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.9.0">v0.9.0</a> (2017-10-04)<a href="https://github.com/wechaty/wechaty/compare/v0.8.2...v0.9.0">Full Changelog</a>​</p>
+
+<h3 id="v082-2017-05-03-">v0.8.2 2017-05-03 <a id="v-0-8-2-2017-05-03"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.8.2">v0.8.2</a> (2017-05-03)<a href="https://github.com/wechaty/wechaty/compare/v0.7.0...v0.8.2">Full Changelog</a>​</p>
+
+<h3 id="v070-2016-12-29-">v0.7.0 2016-12-29 <a id="v-0-7-0-2016-12-29"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.7.0">v0.7.0</a> (2016-12-29)<a href="https://github.com/wechaty/wechaty/compare/v0.6.32...v0.7.0">Full Changelog</a>​</p>
+
+<h3 id="v0632-2016-11-28-">v0.6.32 2016-11-28 <a id="v-0-6-32-2016-11-28"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.6.32">v0.6.32</a> (2016-11-28)<a href="https://github.com/wechaty/wechaty/compare/v0.6.21...v0.6.32">Full Changelog</a>​</p>
+
+<h3 id="v0621-2016-11-14-">v0.6.21 2016-11-14 <a id="v-0-6-21-2016-11-14"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.6.21">v0.6.21</a> (2016-11-14)<a href="https://github.com/wechaty/wechaty/compare/v0.5.21...v0.6.21">Full Changelog</a>​</p>
+
+<h3 id="v0521-2016-11-09-">v0.5.21 2016-11-09 <a id="v-0-5-21-2016-11-09"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.5.21">v0.5.21</a> (2016-11-09)<a href="https://github.com/wechaty/wechaty/compare/v0.5.1...v0.5.21">Full Changelog</a>​</p>
+
+<h3 id="v051-2016-11-03-">v0.5.1 2016-11-03 <a id="v-0-5-1-2016-11-03"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.5.1">v0.5.1</a> (2016-11-03)<a href="https://github.com/wechaty/wechaty/compare/v0.4.0...v0.5.21">Full Changelog</a>​</p>
+
+<h3 id="v040-2016-10-08-">v0.4.0 2016-10-08 <a id="v-0-4-0-2016-10-08"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.4.0">v0.4.0</a> (2016-10-08)<a href="https://github.com/wechaty/wechaty/compare/v0.3.12...v0.4.0">Full Changelog</a>​</p>
+
+<h3 id="v0312-2016-08-25-">v0.3.12 2016-08-25 <a id="v-0-3-12-2016-08-25"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.3.12">v0.3.12</a> (2016-08-25)<a href="https://github.com/wechaty/wechaty/compare/v0.1.0...v0.3.12">Full Changelog</a>​</p>
+
+<h3 id="v010-2016-06-09-">v0.1.0 2016-06-09 <a id="v-0-1-0-2016-06-09"></a></h3>
+
+<p>​<a href="https://github.com/wechaty/wechaty/tree/v0.1.0">v0.1.0</a> (2016-06-09)<a href="https://github.com/wechaty/wechaty/compare/v0.0.5...v0.1.0">Full Changelog</a>​</p>
+
+<p>See more in <a href="https://github.com/wechaty/wechaty/blob/master/CHANGELOG.md">CHANGELOG</a>​</p>

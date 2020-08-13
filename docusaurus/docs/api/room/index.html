@@ -1,0 +1,880 @@
+<p>All wechat rooms(groups) will be encapsulated as a Room.</p>
+
+<h2 id="classes">Classes</h2>
+
+<p><a href="room.md#Room">Room</a></p>
+
+<p>All wechat rooms(groups) will be encapsulated as a Room.</p>
+
+<p><a href="https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/room-bot.ts">Examples/Room-Bot</a></p>
+
+<h2 id="typedefs">Typedefs</h2>
+
+<p><a href="room.md#RoomQueryFilter">RoomQueryFilter</a></p>
+
+<p>The filter to find the room: {topic: string | RegExp} <a href="room.md#RoomEventName">RoomEventName</a></p>
+
+<p>Room Class Event Type <a href="room.md#RoomEventFunction">RoomEventFunction</a></p>
+
+<p>Room Class Event Function <a href="room.md#RoomMemberQueryFilter">RoomMemberQueryFilter</a></p>
+
+<p>The way to search member by Room.member()</p>
+
+<h2 id="room">Room</h2>
+
+<p>All wechat rooms(groups) will be encapsulated as a Room.</p>
+
+<p><a href="https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/room-bot.ts">Examples/Room-Bot</a></p>
+
+<p><strong>Kind</strong>: global class <strong>Properties</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">id</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Get Room id. This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><a href="room.md#Room">Room</a>
+    <ul>
+      <li><em>instance</em>
+        <ul>
+          <li><a href="room.md#Room+sync">.sync()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="room.md#Room+say">.say(textOrContactOrFileOrUrl, …mentionList)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="room.md#Room+on">.on(event, listener)</a> ⇒ <code class="language-plaintext highlighter-rouge">Room</code></li>
+          <li><a href="room.md#Room+add">.add(contact)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="room.md#Room+del">.del(contact)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="room.md#Room+quit">.quit()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="room.md#Room+topic">.topic([newTopic])</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void | string&gt;</code></li>
+          <li><a href="room.md#Room+announce">.announce([text])</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void | string&gt;</code></li>
+          <li><a href="room.md#Room+qrcode">.qrcode()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;string&gt;</code></li>
+          <li><a href="room.md#Room+alias">.alias(contact)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;null | string&gt;</code></li>
+          <li><a href="room.md#Room+has">.has(contact)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;boolean&gt;</code></li>
+          <li><a href="room.md#Room+memberAll">.memberAll([query])</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact []&gt;</code></li>
+          <li><a href="room.md#Room+member">.member(queryArg)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact | null&gt;</code></li>
+          <li><a href="room.md#Room+owner">.owner()</a> ⇒ <code class="language-plaintext highlighter-rouge">Contact</code> | <code class="language-plaintext highlighter-rouge">null</code></li>
+          <li><a href="room.md#room-owner-contact-or-null">.avatar()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;FileBox&gt;</code></li>
+        </ul>
+      </li>
+      <li><em>static</em>
+        <ul>
+          <li><a href="room.md#Room.create">.create(contactList, [topic])</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Room&gt;</code></li>
+          <li><a href="room.md#Room.findAll">.findAll([query])</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Room []&gt;</code></li>
+          <li><a href="room.md#Room.find">.find(query)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Room | null&gt;</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="roomsync--promise-void">room.sync() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Force reload data for Room, Sync data from lowlevel API again.</p>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">sync</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="roomsaytextorcontactorfileorurllinkorminiprogram-mentionlist--promise-void">room.say(textOrContactOrFileOrUrlLinkOrMiniProgram, …mentionList) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Send message inside Room, if set mentionList, wechaty will mention the contact list as well.</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">textOrContactOrFileOrUrlLinkOrMiniProgram</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code> | <code class="language-plaintext highlighter-rouge">Contact</code> | <code class="language-plaintext highlighter-rouge">FileBox</code> | <code class="language-plaintext highlighter-rouge">UrlLink</code> | <code class="language-plaintext highlighter-rouge">MiniProgram</code></td>
+      <td style="text-align: left">Send <code class="language-plaintext highlighter-rouge">text</code>, <code class="language-plaintext highlighter-rouge">media file</code> or <code class="language-plaintext highlighter-rouge">link</code> inside Room.   You can use <a href="https://www.npmjs.com/package/file-box">FileBox</a> to send file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">…mentionList</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Contact []</code></td>
+      <td style="text-align: left">Send content inside Room, and mention @contact list.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="exampl">Exampl</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">FileBox</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">file-box</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span>
+  <span class="nx">Wechaty</span><span class="p">,</span>
+  <span class="nx">UrlLink</span><span class="p">,</span>
+  <span class="nx">MiniProgram</span><span class="p">,</span>
+<span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">})</span>
+
+<span class="c1">// 1. Send text inside Room</span>
+
+<span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello world!</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="c1">// 2. Send media file inside Room</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FileBox</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">file-box</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">fileBox1</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nx">fromUrl</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://wechaty.github.io/wechaty/images/bot-qr-code.png</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">fileBox2</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nx">fromLocal</span><span class="p">(</span><span class="dl">'</span><span class="s1">/tmp/text.txt</span><span class="dl">'</span><span class="p">)</span>
+<span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">fileBox1</span><span class="p">)</span>
+<span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">fileBox2</span><span class="p">)</span>
+
+<span class="c1">// 3. Send Contact Card in a room</span>
+
+<span class="kd">const</span> <span class="nx">contactCard</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lijiarui</span><span class="dl">'</span><span class="p">})</span> <span class="c1">// change 'lijiarui' to any of the room member</span>
+<span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">contactCard</span><span class="p">)</span>
+
+<span class="c1">// 4. Send text inside room and mention @mention contact</span>
+
+<span class="kd">const</span> <span class="nx">members</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">memberAll</span><span class="p">()</span> <span class="c1">// all members in this room</span>
+<span class="kd">const</span> <span class="nx">someMembers</span> <span class="o">=</span> <span class="nx">members</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello world!</span><span class="dl">'</span><span class="p">,</span> <span class="p">...</span><span class="nx">someMembers</span><span class="p">)</span>
+
+<span class="c1">// 5. send Link inside room</span>
+
+<span class="kd">const</span> <span class="nx">linkPayload</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UrlLink</span><span class="p">({</span>
+  <span class="na">description</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">thumbnailUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://avatars0.githubusercontent.com/u/25162437?s=200&amp;v=4</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">title</span>       <span class="p">:</span> <span class="dl">'</span><span class="s1">Welcome to Wechaty</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">url</span>         <span class="p">:</span> <span class="dl">'</span><span class="s1">https://github.com/chatie/wechaty</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">linkPayload</span><span class="p">)</span>
+
+<span class="c1">// 6. send MiniProgram (only supported by `wechaty-puppet-macpro`)</span>
+
+<span class="kd">const</span> <span class="nx">miniProgram</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MiniProgram</span> <span class="p">({</span>
+  <span class="na">appid</span>              <span class="p">:</span> <span class="dl">'</span><span class="s1">gh_0aa444a25adc</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">title</span>              <span class="p">:</span> <span class="dl">'</span><span class="s1">我正在使用Authing认证身份，你也来试试吧</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">pagePath</span>           <span class="p">:</span> <span class="dl">'</span><span class="s1">routes/explore.html</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">description</span>        <span class="p">:</span> <span class="dl">'</span><span class="s1">身份管家</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">thumbUrl</span>           <span class="p">:</span> <span class="dl">'</span><span class="s1">30590201000452305002010002041092541302033d0af802040b30feb602045df0c2c5042b777875706c6f61645f31373533353339353230344063686174726f6f6d3131355f313537363035393538390204010400030201000400</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">thumbKey</span>           <span class="p">:</span> <span class="dl">'</span><span class="s1">42f8609e62817ae45cf7d8fefb532e83</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">});</span>
+<span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">miniProgram</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="roomonevent-listener--this">room.on(event, listener) ⇒ <code class="language-plaintext highlighter-rouge">this</code></h3>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a> <strong>Returns</strong>: <code class="language-plaintext highlighter-rouge">this</code> - - Room for chain</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">event</td>
+      <td style="text-align: left"><a href="room.md#RoomEventName"><code class="language-plaintext highlighter-rouge">RoomEventName</code></a></td>
+      <td style="text-align: left">Emit WechatyEvent</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">listener</td>
+      <td style="text-align: left"><a href="room.md#RoomEventFunction"><code class="language-plaintext highlighter-rouge">RoomEventFunction</code></a></td>
+      <td style="text-align: left">Depends on the WechatyEvent</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-eventjoin-">Example <em>(Event:join )</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">topic of your room</span><span class="dl">'</span><span class="p">})</span> <span class="c1">// change `event-room` to any room topic in your wechat</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">room</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">join</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">room</span><span class="p">,</span> <span class="nx">inviteeList</span><span class="p">,</span> <span class="nx">inviter</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">nameList</span> <span class="o">=</span> <span class="nx">inviteeList</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">name</span><span class="p">()).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Room got new member </span><span class="p">${</span><span class="nx">nameList</span><span class="p">}</span><span class="s2">, invited by </span><span class="p">${</span><span class="nx">inviter</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="example-eventleave-">Example <em>(Event:leave )</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">topic of your room</span><span class="dl">'</span><span class="p">})</span> <span class="c1">// change `event-room` to any room topic in your wechat</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">room</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">leave</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">room</span><span class="p">,</span> <span class="nx">leaverList</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">nameList</span> <span class="o">=</span> <span class="nx">leaverList</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">name</span><span class="p">()).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Room lost member </span><span class="p">${</span><span class="nx">nameList</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="example-eventtopic-">Example <em>(Event:topic )</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">topic of your room</span><span class="dl">'</span><span class="p">})</span> <span class="c1">// change `event-room` to any room topic in your wechat</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">room</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">topic</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">room</span><span class="p">,</span> <span class="nx">topic</span><span class="p">,</span> <span class="nx">oldTopic</span><span class="p">,</span> <span class="nx">changer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Room topic changed from </span><span class="p">${</span><span class="nx">oldTopic</span><span class="p">}</span><span class="s2"> to </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2"> by </span><span class="p">${</span><span class="nx">changer</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="example-eventinvite-">Example <em>(Event:invite )</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">topic of your room</span><span class="dl">'</span><span class="p">})</span> <span class="c1">// change `event-room` to any room topic in your wechat</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">room</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">invite</span><span class="dl">'</span><span class="p">,</span> <span class="nx">roomInvitation</span> <span class="o">=&gt;</span> <span class="nx">roomInvitation</span><span class="p">.</span><span class="nx">accept</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="roomaddcontact--promise-void">room.add(contact) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Add contact in a room</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+
+  <p>see <a href="https://github.com/Chatie/wechaty/issues/1441">Web version of WeChat closed group interface</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">contact</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Contact</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="exampl-1">Exampl</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lijiarui</span><span class="dl">'</span><span class="p">})</span> <span class="c1">// change 'lijiarui' to any contact in your wechat</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechat</span><span class="dl">'</span><span class="p">})</span>        <span class="c1">// change 'wechat' to any room topic in your wechat</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+     <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">contact</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="roomdelcontact--promise-void">room.del(contact) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Delete a contact from the room It works only when the bot is the owner of the room</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+
+  <p>see <a href="https://github.com/Chatie/wechaty/issues/1441">Web version of WeChat closed group interface</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">contact</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Contact</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechat</span><span class="dl">'</span><span class="p">})</span>          <span class="c1">// change 'wechat' to any room topic in your wechat</span>
+<span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lijiarui</span><span class="dl">'</span><span class="p">})</span>   <span class="c1">// change 'lijiarui' to any room member in the room you just set</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+     <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span><span class="nx">contact</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="roomquit--promise-void">room.quit() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Bot quit the room itself</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">quit</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="roomtopicnewtopic--promise-void--string">room.topic([newTopic]) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void | string&gt;</code></h3>
+
+<p>SET/GET topic from the room</p>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">[newTopic]</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">If set this para, it will change room topic.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-when-you-say-anything-in-a-room-it-will-get-room-topic-">Example <em>(When you say anything in a room, it will get room topic. )</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">m</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="nx">room</span><span class="p">()</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">topic</span><span class="p">()</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`room topic is : </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="example-when-you-say-anything-in-a-room-it-will-change-room-topic-">Example <em>(When you say anything in a room, it will change room topic. )</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">m</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="nx">room</span><span class="p">()</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">oldTopic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">topic</span><span class="p">()</span>
+    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">topic</span><span class="p">(</span><span class="dl">'</span><span class="s1">change topic to wechaty!</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`room topic change from </span><span class="p">${</span><span class="nx">oldTopic</span><span class="p">}</span><span class="s2"> to </span><span class="p">${</span><span class="nx">room</span><span class="p">.</span><span class="nx">topic</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="roomannouncetext--promise-void--string">room.announce([text]) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void | string&gt;</code></h3>
+
+<p>SET/GET announce from the room</p>
+
+<blockquote>
+  <p>Tips: It only works when bot is the owner of the room.</p>
+
+  <p>This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">[text]</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">If set this para, it will change room announce.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-when-you-say-anything-in-a-room-it-will-get-room-announce-">Example <em>(When you say anything in a room, it will get room announce. )</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your room</span><span class="dl">'</span><span class="p">})</span>
+<span class="kd">const</span> <span class="nx">announce</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">announce</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`room announce is : </span><span class="p">${</span><span class="nx">announce</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="example-when-you-say-anything-in-a-room-it-will-change-room-announce-">Example <em>(When you say anything in a room, it will change room announce. )</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your room</span><span class="dl">'</span><span class="p">})</span>
+<span class="kd">const</span> <span class="nx">oldAnnounce</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">announce</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">announce</span><span class="p">(</span><span class="dl">'</span><span class="s1">change announce to wechaty!</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`room announce change from </span><span class="p">${</span><span class="nx">oldAnnounce</span><span class="p">}</span><span class="s2"> to </span><span class="p">${</span><span class="nx">room</span><span class="p">.</span><span class="nx">announce</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="roomqrcode--promise-string">room.qrcode() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;string&gt;</code></h3>
+
+<p>Get QR Code of the Room from the room, which can be used as scan and join the room.</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a></p>
+
+<h3 id="roomaliascontact--promise-string--null">room.alias(contact) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;string | null&gt;</code></h3>
+
+<p>Return contact’s roomAlias in the room</p>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a> <strong>Returns</strong>: <code class="language-plaintext highlighter-rouge">Promise &lt;string | null&gt;</code> - - If a contact has an alias in room, return string, otherwise return null</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">contact</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Contact</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="exampl-2">Exampl</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">m</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="nx">room</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">alias</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">alias</span><span class="p">(</span><span class="nx">contact</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> alias is </span><span class="p">${</span><span class="nx">alias</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="roomhascontact--promise-boolean">room.has(contact) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;boolean&gt;</code></h3>
+
+<p>Check if the room has member <code class="language-plaintext highlighter-rouge">contact</code>, the return is a Promise and must be <code class="language-plaintext highlighter-rouge">await</code>-ed</p>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a> <strong>Returns</strong>: <code class="language-plaintext highlighter-rouge">Promise.</code> - Return <code class="language-plaintext highlighter-rouge">true</code> if has contact, else return <code class="language-plaintext highlighter-rouge">false</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">contact</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Contact</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-check-whether-lijiarui-is-in-the-room-wechaty">Example <em>(Check whether ‘lijiarui’ is in the room ‘wechaty’)</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lijiarui</span><span class="dl">'</span><span class="p">})</span>   <span class="c1">// change 'lijiarui' to any of contact in your wechat</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">})</span>         <span class="c1">// change 'wechaty' to any of the room in your wechat</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">contact</span> <span class="o">&amp;&amp;</span> <span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">contact</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> is in the room wechaty!`</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> is not in the room wechaty!`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="roommemberallquery--promise-contact-">room.memberAll([query]) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact []&gt;</code></h3>
+
+<p>Find all contacts in a room</p>
+
+<h4 id="definition">definition</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">name</code>                 the name-string set by user-self, should be called name, equal to <code class="language-plaintext highlighter-rouge">Contact.name()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">roomAlias</code>            the name-string set by user-self in the room, should be called roomAlias</li>
+  <li><code class="language-plaintext highlighter-rouge">contactAlias</code>         the name-string set by bot for others, should be called alias, equal to <code class="language-plaintext highlighter-rouge">Contact.alias()</code></li>
+</ul>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">[query]</td>
+      <td style="text-align: left"><a href="room.md#RoomMemberQueryFilter"><code class="language-plaintext highlighter-rouge">RoomMemberQueryFilter</code></a> | <code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Optional parameter, When use memberAll(name:string), return all matched members, including name, roomAlias, contactAlias</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-1">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">memberList</span><span class="p">:</span> <span class="nx">Conatct</span><span class="p">[]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">memberAll</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`room all member list: `</span><span class="p">,</span> <span class="nx">memberList</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">memberContactList</span><span class="p">:</span> <span class="nx">Conatct</span><span class="p">[]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">memberAll</span><span class="p">(</span><span class="s2">`abc`</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`contact list with all name, room alias, alias are abc:`</span><span class="p">,</span> <span class="nx">memberContactList</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="roommemberqueryarg--promise-contact--null">room.member(queryArg) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact | null&gt;</code></h3>
+
+<p>Find all contacts in a room, if get many, return the first one.</p>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">queryArg</td>
+      <td style="text-align: left"><a href="room.md#RoomMemberQueryFilter"><code class="language-plaintext highlighter-rouge">RoomMemberQueryFilter</code></a> | <code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">When use member(name:string), return all matched members, including name, roomAlias, contactAlias</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-find-member-by-name">Example <em>(Find member by name)</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">})</span>           <span class="c1">// change 'wechaty' to any room name in your wechat</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">member</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">member</span><span class="p">(</span><span class="dl">'</span><span class="s1">lijiarui</span><span class="dl">'</span><span class="p">)</span>             <span class="c1">// change 'lijiarui' to any room member in your wechat</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">member</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`wechaty room got the member: </span><span class="p">${</span><span class="nx">member</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`cannot get member in wechaty room!`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="example-find-member-by-memberqueryfilter">Example <em>(Find member by MemberQueryFilter)</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">})</span>          <span class="c1">// change 'wechaty' to any room name in your wechat</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">member</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">member</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lijiarui</span><span class="dl">'</span><span class="p">})</span>        <span class="c1">// change 'lijiarui' to any room member in your wechat</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">member</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`wechaty room got the member: </span><span class="p">${</span><span class="nx">member</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`cannot get member in wechaty room!`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="roomowner--contact--null">room.owner() ⇒ <code class="language-plaintext highlighter-rouge">Contact</code> | <code class="language-plaintext highlighter-rouge">null</code></h3>
+
+<p>Get room’s owner from the room.</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">owner</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nx">owner</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="roomavatar--promise-filebox">room.avatar() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;FileBox&gt;</code></h3>
+
+<p>Get room’s avatar</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="room.md#room"><code class="language-plaintext highlighter-rouge">Room</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">owner</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nx">avatar</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="roomcreatecontactlist-topic--promise-room">Room.create(contactList, [topic]) ⇒ <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Promise &lt;Room&gt;</code></a></h3>
+
+<p>Create a new room.</p>
+
+<p><strong>Kind</strong>: static method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">contactList</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Array</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">[topic]</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-creat-a-room-with-lijiarui-and-juxiaomi-the-room-topic-is-ding---created">Example <em>(Creat a room with ‘lijiarui’ and ‘juxiaomi’, the room topic is ‘ding - created’)</em></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">helperContactA</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Contact</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lijiarui</span><span class="dl">'</span> <span class="p">})</span>  <span class="c1">// change 'lijiarui' to any contact in your wechat</span>
+<span class="kd">const</span> <span class="nx">helperContactB</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Contact</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">juxiaomi</span><span class="dl">'</span> <span class="p">})</span>  <span class="c1">// change 'juxiaomi' to any contact in your wechat</span>
+<span class="kd">const</span> <span class="nx">contactList</span> <span class="o">=</span> <span class="p">[</span><span class="nx">helperContactA</span><span class="p">,</span> <span class="nx">helperContactB</span><span class="p">]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Bot</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">contactList: %s</span><span class="dl">'</span><span class="p">,</span> <span class="nx">contactList</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">))</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Room</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">contactList</span><span class="p">,</span> <span class="dl">'</span><span class="s1">ding</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Bot</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">createDingRoom() new ding room created: %s</span><span class="dl">'</span><span class="p">,</span> <span class="nx">room</span><span class="p">)</span>
+<span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">topic</span><span class="p">(</span><span class="dl">'</span><span class="s1">ding - created</span><span class="dl">'</span><span class="p">)</span>
+<span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">ding - created</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="roomfindallquery--promise-room-">Room.findAll([query]) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Room []&gt;</code></h3>
+
+<p>Find room by by filter: {topic: string | RegExp}, return all the matched room</p>
+
+<p><strong>Kind</strong>: static method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">[query]</td>
+      <td style="text-align: left"><a href="room.md#RoomQueryFilter"><code class="language-plaintext highlighter-rouge">RoomQueryFilter</code></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="exampl-3">Exampl</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in</span>
+<span class="kd">const</span> <span class="nx">roomList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">findAll</span><span class="p">()</span>                    <span class="c1">// get the room list of the bot</span>
+<span class="kd">const</span> <span class="nx">roomList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">})</span>  <span class="c1">// find all of the rooms with name 'wechaty'</span>
+</code></pre></div></div>
+
+<h3 id="roomfindquery--promise-room">Room.find(query) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Room&gt;</code></h3>
+
+<p>Try to find a room by filter: {topic: string | RegExp}. If get many, return the first one.</p>
+
+<p><strong>Kind</strong>: static method of <a href="room.md#Room"><code class="language-plaintext highlighter-rouge">Room</code></a> <strong>Returns</strong>: <code class="language-plaintext highlighter-rouge">Promise &lt;Room&gt;</code> - If can find the room, return Room, or return null</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">query</td>
+      <td style="text-align: left"><a href="room.md#RoomQueryFilter"><code class="language-plaintext highlighter-rouge">RoomQueryFilter</code></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="exampl-4">Exampl</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in...</span>
+<span class="kd">const</span> <span class="nx">roomList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">roomList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="roomqueryfilter">RoomQueryFilter</h2>
+
+<p>The filter to find the room: {topic: string | RegExp}</p>
+
+<p><strong>Kind</strong>: global typedef <strong>Properties</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">topic</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="roomeventname">RoomEventName</h2>
+
+<p>Room Class Event Type</p>
+
+<p><strong>Kind</strong>: global typedef <strong>Properties</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">join</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Emit when anyone join any room.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">topic</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Get topic event, emitted when someone change room topic.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">leave</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Emit when anyone leave the room.                                If someone leaves the room by themselves, wechat will not notice other people in the room, so the bot will never get the “leave” event.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="roomeventfunction">RoomEventFunction</h2>
+
+<p>Room Class Event Function</p>
+
+<p><strong>Kind</strong>: global typedef <strong>Properties</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">room-join</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Room, inviteeList: Contact[] , inviter: Contact)  =&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">room-topic</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Room, topic: string, oldTopic: string, changer: Contact) =&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">room-leave</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Room, leaver: Contact) =&gt; void</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="roommemberqueryfilter">RoomMemberQueryFilter</h2>
+
+<p>The way to search member by Room.member()</p>
+
+<p><strong>Kind</strong>: global typedef <strong>Properties</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">name</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Find the contact by wechat name in a room, equal to <code class="language-plaintext highlighter-rouge">Contact.name()</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">roomAlias</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Find the contact by alias set by the bot for others in a room.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">contactAlias</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Find the contact by alias set by the contact out of a room, equal to <code class="language-plaintext highlighter-rouge">Contact.alias()</code>. <a href="https://github.com/Chatie/wechaty/issues/365">More Detail</a></td>
+    </tr>
+  </tbody>
+</table>

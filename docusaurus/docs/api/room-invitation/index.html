@@ -1,0 +1,92 @@
+<p>Accept room invitation</p>
+
+<h2 id="roominvitation">RoomInvitation</h2>
+
+<p>accept room invitation</p>
+
+<p><strong>Kind</strong>: global class</p>
+
+<ul>
+  <li><a href="room-invitation.md#RoomInvitation">RoomInvitation</a>
+    <ul>
+      <li><a href="room-invitation.md#RoomInvitation+accept">.accept()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+      <li><a href="room-invitation.md#RoomInvitation+inviter">.inviter()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact&gt;</code></li>
+      <li><a href="room-invitation.md#RoomInvitation+topic">.topic()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;string&gt;</code></li>
+      <li><a href="room-invitation.md#RoomInvitation+roomTopic"><del>.roomTopic()</del></a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;string&gt;</code></li>
+      <li><a href="room-invitation.md#RoomInvitation+date">.date()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Date&gt;</code></li>
+      <li><a href="room-invitation.md#RoomInvitation+age">.age()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;number&gt;</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="roominvitationaccept--promise-void">roomInvitation.accept() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Accept Room Invitation</p>
+
+<p><strong>Kind</strong>: instance method of <a href="room-invitation.md#RoomInvitation"><code class="language-plaintext highlighter-rouge">RoomInvitation</code></a></p>
+
+<h4 id="example">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-invite</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">roomInvitation</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`received room-invite event.`</span><span class="p">)</span>
+    <span class="k">await</span> <span class="nx">roomInvitation</span><span class="p">.</span><span class="nx">accept</span><span class="p">()</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="roominvitationinviter--promise-contact">roomInvitation.inviter() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact&gt;</code></h3>
+
+<p>Get the inviter from room invitation</p>
+
+<p><strong>Kind</strong>: instance method of <a href="room-invitation.md#RoomInvitation"><code class="language-plaintext highlighter-rouge">RoomInvitation</code></a></p>
+
+<h4 id="example-1">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-invite</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">roomInvitation</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">inviter</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">roomInvitation</span><span class="p">.</span><span class="nx">inviter</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">inviter</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`received room invitation event from </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="roominvitationtopic--promise-string">roomInvitation.topic() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;string&gt;</code></h3>
+
+<p>Get the room topic from room invitation</p>
+
+<p><strong>Kind</strong>: instance method of <a href="room-invitation.md#RoomInvitation"><code class="language-plaintext highlighter-rouge">RoomInvitation</code></a></p>
+
+<h4 id="example-2">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-invite</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">roomInvitation</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">roomInvitation</span><span class="p">.</span><span class="nx">topic</span><span class="p">()</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`received room invitation event from room </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="roominvitationroomtopic"><del>roomInvitation.roomTopic()</del></h3>
+
+<p><strong>Kind</strong>: instance method of <a href="room-invitation.md#RoomInvitation"><code class="language-plaintext highlighter-rouge">RoomInvitation</code></a><br />
+<strong>Deprecated:</strong>: use topic() instead</p>
+
+<h3 id="roominvitationdate--promise-date">roomInvitation.date() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Date&gt;</code></h3>
+
+<p>Get the invitation time</p>
+
+<p><strong>Kind</strong>: instance method of <a href="room-invitation.md#RoomInvitation"><code class="language-plaintext highlighter-rouge">RoomInvitation</code></a></p>
+
+<h3 id="roominvitationage--promise-number">roomInvitation.age() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;number&gt;</code></h3>
+
+<p>Returns the roopm invitation age in seconds.</p>
+
+<p>For example, the invitation is sent at time <code class="language-plaintext highlighter-rouge">8:43:01</code>, and when we received it in Wechaty, the time is <code class="language-plaintext highlighter-rouge">8:43:15</code>, then the age() will return <code class="language-plaintext highlighter-rouge">8:43:15 - 8:43:01 = 14 (seconds)</code></p>
+
+<p><strong>Kind</strong>: instance method of <a href="room-invitation.md#RoomInvitation"><code class="language-plaintext highlighter-rouge">RoomInvitation</code></a></p>

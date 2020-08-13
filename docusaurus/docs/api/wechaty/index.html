@@ -1,0 +1,672 @@
+<p>Main bot class, A Bot is a wechat client depends on which puppet you use.</p>
+
+<h2 id="classes">Classes</h2>
+
+<p><a href="wechaty.md#Wechaty">Wechaty</a></p>
+
+<p>Main bot class.</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">Bot</code> is a wechat client depends on which puppet you use. It may equals</p>
+
+<ul>
+  <li>web-wechat, when you use: <a href="https://github.com/wechaty/wechaty-puppet-puppeteer">puppet-puppeteer</a>/<a href="https://github.com/wechaty/wechaty-puppet-wechat4u">puppet-wechat4u</a></li>
+  <li>ipad-wechat, when you use: <a href="https://github.com/lijiarui/wechaty-puppet-padchat">puppet-padchat</a></li>
+  <li>ios-wechat, when you use: puppet-ioscat</li>
+</ul>
+
+<p>See more:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty-getting-started/wiki/FAQ-EN#31-what-is-a-puppet-in-wechaty">What is a Puppet in Wechaty</a></li>
+</ul>
+
+<blockquote>
+  <p>If you want to know how to send message, see <a href="wechaty.md#Message">Message</a><br />
+If you want to know how to get contact, see <a href="wechaty.md#Contact">Contact</a></p>
+</blockquote>
+
+<h2 id="typedefs">Typedefs</h2>
+
+<p><a href="wechaty.md#PuppetName">PuppetName</a></p>
+
+<p>The term <a href="https://github.com/wechaty/wechaty/wiki/Puppet">Puppet</a> in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat(that’s the reason we call it puppet). The plugins are named PuppetXXX, for example:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty-puppet-puppeteer">PuppetPuppeteer</a></li>
+  <li><a href="https://github.com/lijiarui/wechaty-puppet-padchat">PuppetPadchat</a></li>
+</ul>
+
+<p><a href="wechaty.md#WechatyOptions">WechatyOptions</a></p>
+
+<p>The option parameter to create a wechaty instance <a href="wechaty.md#WechatyEventName">WechatyEventName</a></p>
+
+<p>Wechaty Class Event Type <a href="wechaty.md#WechatyEventFunction">WechatyEventFunction</a></p>
+
+<p>Wechaty Class Event Function</p>
+
+<h2 id="wechaty">Wechaty</h2>
+
+<p>Main bot class.</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">Bot</code> is a wechat client depends on which puppet you use. It may equals</p>
+
+<ul>
+  <li>web-wechat, when you use: <a href="https://github.com/wechaty/wechaty-puppet-puppeteer">puppet-puppeteer</a>/<a href="https://github.com/wechaty/wechaty-puppet-wechat4u">puppet-wechat4u</a></li>
+  <li>ipad-wechat, when you use: <a href="https://github.com/lijiarui/wechaty-puppet-padchat">puppet-padchat</a></li>
+  <li>ios-wechat, when you use: puppet-ioscat</li>
+</ul>
+
+<p>See more:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty-getting-started/wiki/FAQ-EN#31-what-is-a-puppet-in-wechaty">What is a Puppet in Wechaty</a></li>
+</ul>
+
+<blockquote>
+  <p>If you want to know how to send message, see <a href="wechaty.md#Message">Message</a><br />
+If you want to know how to get contact, see <a href="wechaty.md#Contact">Contact</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: global class</p>
+
+<ul>
+  <li><a href="wechaty.md#Wechaty">Wechaty</a>
+    <ul>
+      <li><a href="wechaty.md#new_Wechaty_new">new Wechaty([options])</a></li>
+      <li><em>instance</em>
+        <ul>
+          <li><a href="wechaty.md#Wechaty+on">.on(event, listener)</a> ⇒ <a href="wechaty.md#Wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a></li>
+          <li><a href="wechaty.md#Wechaty+start">.start()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="wechaty.md#Wechaty+stop">.stop()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="wechaty.md#Wechaty+logout">.logout()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="wechaty.md#Wechaty+logonoff">.logonoff()</a> ⇒ <code class="language-plaintext highlighter-rouge">boolean</code></li>
+          <li><a href="wechaty.md#Wechaty+userSelf">.userSelf()</a> ⇒ <code class="language-plaintext highlighter-rouge">ContactSelf</code></li>
+          <li><a href="wechaty.md#Wechaty+say">.say(textOrContactOrFileOrUrl)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+        </ul>
+      </li>
+      <li><em>static</em>
+        <ul>
+          <li><a href="wechaty.md#Wechaty.instance">.instance([options])</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="new-wechatyoptions">new Wechaty([options])</h3>
+
+<p>Creates an instance of Wechaty.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">[options]</td>
+      <td style="text-align: left"><a href="wechaty.md#WechatyOptions"><code class="language-plaintext highlighter-rouge">WechatyOptions</code></a></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">{}</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong> <em>(The World’s Shortest ChatBot Code: 6 lines of JavaScript)</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span>    <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="dl">'</span><span class="s1">https://api.qrserver.com/v1/create-qr-code/?data=</span><span class="dl">'</span><span class="p">,</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">),</span><span class="dl">'</span><span class="s1">&amp;size=220x220&amp;margin=20</span><span class="dl">'</span><span class="p">,].</span><span class="nx">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)))</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span>   <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nx">message</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Message: </span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="wechatyonevent-listener--wechaty">wechaty.on(event, listener) ⇒ <a href="wechaty.md#Wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a></h3>
+
+<p>When the bot get message, it will emit the following Event.</p>
+
+<p>You can do anything you want when in these events functions. The main Event name as follows:</p>
+
+<ul>
+  <li><strong>scan</strong>: Emit when the bot needs to show you a QR Code for scanning. After scan the qrcode, you can login</li>
+  <li><strong>login</strong>: Emit when bot login full successful.</li>
+  <li><strong>logout</strong>: Emit when bot detected log out.</li>
+  <li><strong>message</strong>: Emit when there’s a new message.</li>
+</ul>
+
+<p>see more in <a href="wechaty.md#WechatyEventName">WechatyEventName</a></p>
+
+<p><strong>Kind</strong>: instance method of <a href="wechaty.md#Wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a><br />
+<strong>Returns</strong>: <a href="wechaty.md#Wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a> - - this for chaining, see advanced <a href="https://github.com/wechaty/wechaty-getting-started/wiki/FAQ-EN#36-why-wechatyonevent-listener-return-wechaty">chaining usage</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">event</td>
+      <td style="text-align: left"><a href="wechaty.md#WechatyEventName"><code class="language-plaintext highlighter-rouge">WechatyEventName</code></a></td>
+      <td style="text-align: left">Emit WechatyEvent</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">listener</td>
+      <td style="text-align: left"><a href="wechaty.md#WechatyEventFunction"><code class="language-plaintext highlighter-rouge">WechatyEventFunction</code></a></td>
+      <td style="text-align: left">Depends on the WechatyEvent</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong> <em>(Event:scan)</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Scan Event will emit when the bot needs to show you a QR Code for scanning</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`[</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">] Scan </span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2"> to login.`</span> <span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(Event:login )</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Login Event will emit when bot login full successful.</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`user </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> login`</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(Event:logout )</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Logout Event will emit when bot detected log out.</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">logout</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`user </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logout`</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(Event:message )</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Message Event will emit when there's a new message.</span>
+
+<span class="nx">wechaty</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`message </span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2"> received`</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(Event:friendship )</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Friendship Event will emit when got a new friend request, or friendship is confirmed.</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friendship</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">friendship</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">friendship</span><span class="p">.</span><span class="nx">contact</span><span class="p">()</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">friendship</span><span class="p">.</span><span class="nx">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Friendship</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Receive</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 1. receive new friendship request from new contact</span>
+    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">friendship</span><span class="p">.</span><span class="nx">accept</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Request from </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> is accept succesfully!`</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Request from </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> failed to accept!`</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">friendship</span><span class="p">.</span><span class="nx">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Friendship</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Confirm</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 2. confirm friendship</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`New friendship confirmed with </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(Event:room-join )</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// room-join Event will emit when someone join the room.</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-join</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">room</span><span class="p">,</span> <span class="nx">inviteeList</span><span class="p">,</span> <span class="nx">inviter</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">nameList</span> <span class="o">=</span> <span class="nx">inviteeList</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">name</span><span class="p">()).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Room </span><span class="p">${</span><span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">topic</span><span class="p">()}</span><span class="s2"> got new member </span><span class="p">${</span><span class="nx">nameList</span><span class="p">}</span><span class="s2">, invited by </span><span class="p">${</span><span class="nx">inviter</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(Event:room-leave )</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// room-leave Event will emit when someone leave the room.</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-leave</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">room</span><span class="p">,</span> <span class="nx">leaverList</span><span class="p">,</span> <span class="nx">remover</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">nameList</span> <span class="o">=</span> <span class="nx">leaverList</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">name</span><span class="p">()).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Room </span><span class="p">${</span><span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">topic</span><span class="p">()}</span><span class="s2"> lost member </span><span class="p">${</span><span class="nx">nameList</span><span class="p">}</span><span class="s2">, the remover is: </span><span class="p">${</span><span class="nx">remover</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(Event:room-topic )</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// room-topic Event will emit when someone change the room's topic.</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-topic</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">room</span><span class="p">,</span> <span class="nx">topic</span><span class="p">,</span> <span class="nx">oldTopic</span><span class="p">,</span> <span class="nx">changer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Room </span><span class="p">${</span><span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">topic</span><span class="p">()}</span><span class="s2"> topic changed from </span><span class="p">${</span><span class="nx">oldTopic</span><span class="p">}</span><span class="s2"> to </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2"> by </span><span class="p">${</span><span class="nx">changer</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(Event:room-invite, RoomInvitation has been encapsulated as a RoomInvitation Class. )</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// room-invite Event will emit when there's an room invitation.</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-invite</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">roomInvitation</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`received room-invite event.`</span><span class="p">)</span>
+    <span class="k">await</span> <span class="nx">roomInvitation</span><span class="p">.</span><span class="nx">accept</span><span class="p">()</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(Event:error )</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// error Event will emit when there's an error occurred.</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="wechatystart--promise-void">wechaty.start() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>When you start the bot, bot will begin to login, need you wechat scan qrcode to login</p>
+
+<blockquote>
+  <p>Tips: All the bot operation needs to be triggered after start() is done</p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="wechaty.md#Wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a></p>
+
+<h4 id="example">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// do other stuff with bot here</span>
+</code></pre></div></div>
+
+<h3 id="wechatystop--promise-void">wechaty.stop() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Stop the bot</p>
+
+<p><strong>Kind</strong>: instance method of <a href="wechaty.md#Wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a></p>
+
+<h4 id="example-1">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">stop</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="wechatylogout--promise-void">wechaty.logout() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Logout the bot</p>
+
+<p><strong>Kind</strong>: instance method of <a href="wechaty.md#Wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a></p>
+
+<h4 id="example-2">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">logout</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="wechatylogonoff--boolean">wechaty.logonoff() ⇒ <code class="language-plaintext highlighter-rouge">boolean</code></h3>
+
+<p>Get the logon / logoff state</p>
+
+<p><strong>Kind</strong>: instance method of <a href="wechaty.md#Wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a></p>
+
+<h4 id="example-3">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">bot</span><span class="p">.</span><span class="nx">logonoff</span><span class="p">())</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Bot logined</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Bot not logined</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="wechatyuserself--contactself">wechaty.userSelf() ⇒ <code class="language-plaintext highlighter-rouge">ContactSelf</code></h3>
+
+<p>Get current user</p>
+
+<p><strong>Kind</strong>: instance method of <a href="wechaty.md#Wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a></p>
+
+<h4 id="example-4">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">userSelf</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Bot is </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="wechatysaytextorcontactorfileorurl--promise-void">wechaty.say(textOrContactOrFileOrUrl) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Send message to userSelf, in other words, bot send message to itself.</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/wechaty/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="wechaty.md#Wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">textOrContactOrFileOrUrl</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code> | <code class="language-plaintext highlighter-rouge">Contact</code> | <code class="language-plaintext highlighter-rouge">FileBox</code> | <code class="language-plaintext highlighter-rouge">UrlLink</code></td>
+      <td style="text-align: left">send text, Contact, file or Link to bot. &lt;/br&gt; You can use <a href="https://www.npmjs.com/package/file-box">FileBox</a> to send file</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-5">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="c1">// after logged in</span>
+
+<span class="c1">// 1. send text to bot itself</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello!</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="c1">// 2. send Contact to bot itself</span>
+<span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="dl">'</span><span class="s1">contactId</span><span class="dl">'</span><span class="p">)</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">contact</span><span class="p">)</span>
+
+<span class="c1">// 3. send Image to bot itself from remote url</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FileBox</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">file-box</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">fileBox</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nx">fromUrl</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://wechaty.github.io/wechaty/images/bot-qr-code.png</span><span class="dl">'</span><span class="p">)</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">fileBox</span><span class="p">)</span>
+
+<span class="c1">// 4. send Image to bot itself from local file</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FileBox</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">file-box</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">fileBox</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nx">fromFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">/tmp/text.jpg</span><span class="dl">'</span><span class="p">)</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">fileBox</span><span class="p">)</span>
+
+<span class="c1">// 5. send Link to bot itself</span>
+<span class="kd">const</span> <span class="nx">linkPayload</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UrlLink</span><span class="p">({</span>
+  <span class="na">description</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">thumbnailUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://avatars0.githubusercontent.com/u/25162437?s=200&amp;v=4</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">title</span>       <span class="p">:</span> <span class="dl">'</span><span class="s1">Welcome to Wechaty</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">url</span>         <span class="p">:</span> <span class="dl">'</span><span class="s1">https://github.com/wechaty/wechaty</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">linkPayload</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="wechatyinstanceoptions">Wechaty.instance([options])</h3>
+
+<p>Get the global instance of Wechaty</p>
+
+<p><strong>Kind</strong>: static method of <a href="wechaty.md#Wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">[options]</td>
+      <td style="text-align: left"><a href="wechaty.md#WechatyOptions"><code class="language-plaintext highlighter-rouge">WechatyOptions</code></a></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">{}</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong> <em>(The World’s Shortest ChatBot Code: 6 lines of JavaScript)</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="nx">Wechaty</span><span class="p">.</span><span class="nx">instance</span><span class="p">()</span> <span class="c1">// Global instance</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Scan QR Code to login: </span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">\n</span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span>       <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span>  <span class="nx">message</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Message: </span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="puppetname">PuppetName</h2>
+
+<p>The term <a href="https://github.com/wechaty/wechaty/wiki/Puppet">Puppet</a> in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat(that’s the reason we call it puppet). The plugins are named PuppetXXX, for example:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty-puppet-puppeteer">PuppetPuppeteer</a></li>
+  <li><a href="https://github.com/lijiarui/wechaty-puppet-padchat">PuppetPadchat</a></li>
+</ul>
+
+<p><strong>Kind</strong>: global typedef<br />
+<strong>Properties</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">wechat4u</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">The default puppet, using the <a href="https://github.com/nodeWechat/wechat4u">wechat4u</a> to control the <a href="https://wx.qq.com/">WeChat Web API</a> via a chrome browser.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">padchat</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">- Using the WebSocket protocol to connect with a Protocol Server for controlling the iPad Wechat program.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">puppeteer</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">- Using the <a href="https://github.com/GoogleChrome/puppeteer">google puppeteer</a> to control the <a href="https://wx.qq.com/">WeChat Web API</a> via a chrome browser.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">mock</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">- Using the mock data to mock wechat operation, just for test.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="wechatyoptions">WechatyOptions</h2>
+
+<p>The option parameter to create a wechaty instance</p>
+
+<p><strong>Kind</strong>: global typedef<br />
+<strong>Properties</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">profile</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Wechaty Name.            When you set this:            <code class="language-plaintext highlighter-rouge">new Wechaty({profile: 'wechatyName'})</code>            it will generate a file called <code class="language-plaintext highlighter-rouge">wechatyName.memory-card.json</code>.            This file stores the bot’s login information.            If the file is valid, the bot can auto login so you don’t need to scan the qrcode to login again.            Also, you can set the environment variable for <code class="language-plaintext highlighter-rouge">WECHATY_PROFILE</code> to set this value when you start.            eg:  <code class="language-plaintext highlighter-rouge">WECHATY_PROFILE="your-cute-bot-name" node bot.js</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">puppet</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PuppetModuleName</code> | <code class="language-plaintext highlighter-rouge">Puppet</code></td>
+      <td style="text-align: left">Puppet name or instance</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">puppetOptions</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Partial.</code></td>
+      <td style="text-align: left">Puppet TOKEN</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ioToken</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Io TOKEN</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="wechatyeventname">WechatyEventName</h2>
+
+<p>Wechaty Class Event Type</p>
+
+<p><strong>Kind</strong>: global typedef<br />
+<strong>Properties</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">error</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">When the bot get error, there will be a Wechaty error event fired.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">login</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">After the bot login full successful, the event login will be emitted, with a Contact of current logined user.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">logout</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Logout will be emitted when bot detected log out, with a Contact of the current login user.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">heartbeat</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Get bot’s heartbeat.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">friendship</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">When someone sends you a friend request, there will be a Wechaty friendship event fired.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">message</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Emit when there’s a new message.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ready</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Emit when all data has load completed, in wechaty-puppet-padchat, it means it has sync Contact and Room completed</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">room-join</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Emit when anyone join any room.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">room-topic</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Get topic event, emitted when someone change room topic.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">room-leave</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Emit when anyone leave the room.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">room-invite</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Emit when there is a room invitation, see more in  <a href="room-invitation.md">RoomInvitation</a>                                    If someone leaves the room by themselves, wechat will not notice other people in the room, so the bot will never get the “leave” event.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">scan</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">A scan event will be emitted when the bot needs to show you a QR Code for scanning. &lt;/br&gt;                                    It is recommend to install qrcode-terminal(run <code class="language-plaintext highlighter-rouge">npm install qrcode-terminal</code>) in order to show qrcode in the terminal.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="wechatyeventfunction">WechatyEventFunction</h2>
+
+<p>Wechaty Class Event Function</p>
+
+<p><strong>Kind</strong>: global typedef<br />
+<strong>Properties</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">error</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty, error: Error) =&gt; void callback function</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">login</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty, user: ContactSelf)=&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">logout</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty, user: ContactSelf) =&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">scan</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty, url: string, code: number) =&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">heartbeat</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty, data: any) =&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">friendship</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty, friendship: Friendship) =&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">message</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty, message: Message) =&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ready</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty) =&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">room-join</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty, room: Room, inviteeList: Contact[],  inviter: Contact) =&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">room-topic</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty, room: Room, newTopic: string, oldTopic: string, changer: Contact) =&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">room-leave</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty, room: Room, leaverList: Contact[]) =&gt; void</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">room-invite</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td style="text-align: left">(this: Wechaty, room: Room, leaverList: Contact[]) =&gt; void                                          see more in  <a href="room-invitation.md">RoomInvitation</a></td>
+    </tr>
+  </tbody>
+</table>

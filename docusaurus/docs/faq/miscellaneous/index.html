@@ -1,0 +1,38 @@
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><strong>General</strong>
+    <ul>
+      <li><a href="#11-i-can-not-login-with-my-wechat-account">Cannot login</a></li>
+      <li><a href="#a">What wechaty cannot do on wechat</a></li>
+    </ul>
+  </li>
+  <li><strong>Others</strong>
+    <ul>
+      <li><a href="#b">Can wechaty send url rich media message?</a></li>
+      <li><a href="#c">I don’t know wechaty support for personal account of wechat official account?</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="miscellaneous">Miscellaneous</h2>
+
+<h3 id="what-is-a-puppet-in-wechaty">What is a <code class="language-plaintext highlighter-rouge">Puppet</code> in Wechaty</h3>
+
+<p>The term <code class="language-plaintext highlighter-rouge">Puppet</code> in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat(that’s the reason we call it puppet).</p>
+
+<p>The plugins are named <code class="language-plaintext highlighter-rouge">XXXPuppet</code>, like <code class="language-plaintext highlighter-rouge">PuppetPuppeteer</code> is using the chrome puppeteer to control the WeChat Web API via a chrome browser, <code class="language-plaintext highlighter-rouge">PuppetPadchat</code> is using the WebSocket protocol to connect with a Protocol Server for controlling the iPad Wechat program.</p>
+
+<h3 id="wechaty--queue">Wechaty &amp; Queue</h3>
+
+<p>In order not blocked by wechat, we add queue in wechaty, see more: <a href="https://github.com/zixia/rx-queue">rx-queue</a></p>
+
+<h3 id="whats-the-difference-between-wechaty-and-wechat4u">What’s the difference between wechaty and wechat4u?</h3>
+
+<p>Wechaty can implement many wechat protocol plughins. The plugins are the component that helps Wechaty to control the Wechat. Wechaty provide same API in web, ipad, ios solutions. <a href="https://github.com/nodeWechat/wechat4u">wechat4u</a> is <a href="https://github.com/spacelan">SPACELAN</a> write as a web solution on github. Wechaty can use wechaty API call wechat 4u API</p>
+
+<blockquote>
+  <p>Is this right: wechaty has All api in wechat4u, but wechat 4u don’t have all api wechaty has.</p>
+</blockquote>
+
+<p>No, wechaty use wechaty itself API for wechat4u. They are totally 2 different project and no one contains another.</p>

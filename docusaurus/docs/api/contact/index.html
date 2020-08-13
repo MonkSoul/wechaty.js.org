@@ -1,0 +1,395 @@
+<p>All wechat contacts(friend) will be encapsulated as a Contact.</p>
+
+<h2 id="classes">Classes</h2>
+
+<p><a href="contact.md#Contact">Contact</a></p>
+
+<p>All wechat contacts(friend) will be encapsulated as a Contact. <a href="https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts">Examples/Contact-Bot</a></p>
+
+<h2 id="typedefs">Typedefs</h2>
+
+<p><a href="contact.md#ContactQueryFilter">ContactQueryFilter</a></p>
+
+<p>The way to search Contact</p>
+
+<h2 id="contact">Contact</h2>
+
+<p>All wechat contacts(friend) will be encapsulated as a Contact. <a href="https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts">Examples/Contact-Bot</a></p>
+
+<p><strong>Kind</strong>: global class <strong>Properties</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">id</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Get Contact id. This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><a href="contact.md#Contact">Contact</a>
+    <ul>
+      <li><em>instance</em>
+        <ul>
+          <li><a href="contact.md#Contact+say">.say(textOrContactOrFileOrUrl)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="contact.md#Contact+name">.name()</a> ⇒ <code class="language-plaintext highlighter-rouge">string</code></li>
+          <li><a href="contact.md#Contact+alias">.alias(newAlias)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;null | string | void&gt;</code></li>
+          <li><a href="contact.md#Contact+friend">.friend()</a> ⇒ <code class="language-plaintext highlighter-rouge">boolean</code> | <code class="language-plaintext highlighter-rouge">null</code></li>
+          <li><a href="contact.md#Contact+type">.type()</a> ⇒ <code class="language-plaintext highlighter-rouge">ContactType.Unknown</code> | <code class="language-plaintext highlighter-rouge">ContactType.Personal</code> | <code class="language-plaintext highlighter-rouge">ContactType.Official</code></li>
+          <li><a href="contact.md#Contact+gender">.gender()</a> ⇒ <code class="language-plaintext highlighter-rouge">ContactGender.Unknown</code> | <code class="language-plaintext highlighter-rouge">ContactGender.Male</code> | <code class="language-plaintext highlighter-rouge">ContactGender.Female</code></li>
+          <li><a href="contact.md#Contact+province">.province()</a> ⇒ <code class="language-plaintext highlighter-rouge">string</code> | <code class="language-plaintext highlighter-rouge">null</code></li>
+          <li><a href="contact.md#Contact+city">.city()</a> ⇒ <code class="language-plaintext highlighter-rouge">string</code> | <code class="language-plaintext highlighter-rouge">null</code></li>
+          <li><a href="contact.md#Contact+avatar">.avatar()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;FileBox&gt;</code></li>
+          <li><a href="contact.md#Contact+sync">.sync()</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></li>
+          <li><a href="contact.md#Contact+self">.self()</a> ⇒ <code class="language-plaintext highlighter-rouge">boolean</code></li>
+        </ul>
+      </li>
+      <li><em>static</em>
+        <ul>
+          <li><a href="contact.md#Contact.find">.find(query)</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact | null&gt;</code></li>
+          <li><a href="contact.md#Contact.findAll">.findAll([queryArg])</a> ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact []&gt;</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="contactsaytextorcontactorfileorurllinkorminiprogram--promise-void">contact.say(textOrContactOrFileOrUrlLinkOrMiniProgram) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">textOrContactOrFileOrUrlLinkOrMiniProgram</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code> | <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a> | <code class="language-plaintext highlighter-rouge">FileBox</code> | <code class="language-plaintext highlighter-rouge">UrlLink</code> | <code class="language-plaintext highlighter-rouge">MiniProgram</code></td>
+      <td style="text-align: left">send text, Contact, file or UrlLink to contact.   You can use <a href="https://www.npmjs.com/package/file-box">FileBox</a> to send file</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">FileBox</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">file-box</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span>
+  <span class="nx">Wechaty</span><span class="p">,</span>
+  <span class="nx">UrlLink</span><span class="p">,</span>
+  <span class="nx">MiniProgram</span><span class="p">,</span>
+<span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lijiarui</span><span class="dl">'</span><span class="p">})</span>  <span class="c1">// change 'lijiarui' to any of your contact name in wechat</span>
+
+<span class="c1">// 1. send text to contact</span>
+
+<span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">welcome to wechaty!</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="c1">// 2. send media file to contact</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FileBox</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">file-box</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">fileBox1</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nx">fromUrl</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://wechaty.github.io/wechaty/images/bot-qr-code.png</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">fileBox2</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nx">fromFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">/tmp/text.txt</span><span class="dl">'</span><span class="p">)</span>
+<span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">fileBox1</span><span class="p">)</span>
+<span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">fileBox2</span><span class="p">)</span>
+
+<span class="c1">// 3. send contact card to contact</span>
+
+<span class="kd">const</span> <span class="nx">contactCard</span> <span class="o">=</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="dl">'</span><span class="s1">contactId</span><span class="dl">'</span><span class="p">)</span>
+<span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">contactCard</span><span class="p">)</span>
+
+<span class="c1">// 4. send url link to contact</span>
+
+<span class="kd">const</span> <span class="nx">urlLink</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UrlLink</span><span class="p">({</span>
+  <span class="na">description</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">thumbnailUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://avatars0.githubusercontent.com/u/25162437?s=200&amp;v=4</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">title</span>       <span class="p">:</span> <span class="dl">'</span><span class="s1">Welcome to Wechaty</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">url</span>         <span class="p">:</span> <span class="dl">'</span><span class="s1">https://github.com/chatie/wechaty</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">urlLink</span><span class="p">)</span>
+
+<span class="c1">// 5. send MiniProgram (only supported by `wechaty-puppet-macpro`)</span>
+
+<span class="kd">const</span> <span class="nx">miniProgram</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MiniProgram</span> <span class="p">({</span>
+  <span class="na">appid</span>              <span class="p">:</span> <span class="dl">'</span><span class="s1">gh_0aa444a25adc</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">title</span>              <span class="p">:</span> <span class="dl">'</span><span class="s1">我正在使用Authing认证身份，你也来试试吧</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">pagePath</span>           <span class="p">:</span> <span class="dl">'</span><span class="s1">routes/explore.html</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">description</span>        <span class="p">:</span> <span class="dl">'</span><span class="s1">身份管家</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">thumbUrl</span>           <span class="p">:</span> <span class="dl">'</span><span class="s1">30590201000452305002010002041092541302033d0af802040b30feb602045df0c2c5042b777875706c6f61645f31373533353339353230344063686174726f6f6d3131355f313537363035393538390204010400030201000400</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">thumbKey</span>           <span class="p">:</span> <span class="dl">'</span><span class="s1">42f8609e62817ae45cf7d8fefb532e83</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="nx">miniProgram</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="contactname--string">contact.name() ⇒ <code class="language-plaintext highlighter-rouge">string</code></h3>
+
+<p>Get the name from a contact</p>
+
+<p><strong>Kind</strong>: instance method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="contactaliasnewalias--promise-null--string--void">contact.alias(newAlias) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;null | string | void&gt;</code></h3>
+
+<p>GET / SET / DELETE the alias for a contact</p>
+
+<p>Tests show it will failed if set alias too frequently(60 times in one minute).</p>
+
+<p><strong>Kind</strong>: instance method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">newAlias</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">none</code> | <code class="language-plaintext highlighter-rouge">string</code> | <code class="language-plaintext highlighter-rouge">null</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Example</strong> <em>( GET the alias for a contact, return {(Promise&lt;string | null&gt;)})</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">alias</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">alias</span><span class="p">()</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">alias</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">You have not yet set any alias for contact </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">())</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">You have already set an alias for contact </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">:</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">alias</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(SET the alias for a contact)</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">alias</span><span class="p">(</span><span class="dl">'</span><span class="s1">lijiarui</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`change </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2">'s alias successfully!`</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`failed to change </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> alias!`</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Example</strong> <em>(DELETE the alias for a contact)</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">oldAlias</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">alias</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`delete </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2">'s alias successfully!`</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`old alias is </span><span class="p">${</span><span class="nx">oldAlias</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`failed to delete </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2">'s alias!`</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="contactfriend--boolean--null">contact.friend() ⇒ <code class="language-plaintext highlighter-rouge">boolean</code> | <code class="language-plaintext highlighter-rouge">null</code></h3>
+
+<p>Check if contact is friend</p>
+
+<blockquote>
+  <p>Tips: This function is depending on the Puppet Implementation, see <a href="https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a> <strong>Returns</strong>: <code class="language-plaintext highlighter-rouge">boolean</code> | <code class="language-plaintext highlighter-rouge">null</code> - True for friend of the bot False for not friend of the bot, null for unknown. <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isFriend</span> <span class="o">=</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">friend</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="contacttype--contacttypeunknown--contacttypepersonal--contacttypeofficial">contact.type() ⇒ <code class="language-plaintext highlighter-rouge">ContactType.Unknown</code> | <code class="language-plaintext highlighter-rouge">ContactType.Personal</code> | <code class="language-plaintext highlighter-rouge">ContactType.Official</code></h3>
+
+<p>Return the type of the Contact</p>
+
+<blockquote>
+  <p>Tips: ContactType is enum here.</p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">isOfficial</span> <span class="o">=</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Official</span>
+</code></pre></div></div>
+
+<h3 id="contactgender--contactgenderunknown--contactgendermale--contactgenderfemale">contact.gender() ⇒ <code class="language-plaintext highlighter-rouge">ContactGender.Unknown</code> | <code class="language-plaintext highlighter-rouge">ContactGender.Male</code> | <code class="language-plaintext highlighter-rouge">ContactGender.Female</code></h3>
+
+<p>Contact gender</p>
+
+<blockquote>
+  <p>Tips: ContactGender is enum here.</p>
+</blockquote>
+
+<p><strong>Kind</strong>: instance method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">gender</span> <span class="o">=</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">gender</span><span class="p">()</span> <span class="o">===</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">Gender</span><span class="p">.</span><span class="nx">Male</span>
+</code></pre></div></div>
+
+<h3 id="contactprovince--string--null">contact.province() ⇒ <code class="language-plaintext highlighter-rouge">string</code> | <code class="language-plaintext highlighter-rouge">null</code></h3>
+
+<p>Get the region ‘province’ from a contact</p>
+
+<p><strong>Kind</strong>: instance method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">province</span> <span class="o">=</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">province</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="contactcity--string--null">contact.city() ⇒ <code class="language-plaintext highlighter-rouge">string</code> | <code class="language-plaintext highlighter-rouge">null</code></h3>
+
+<p>Get the region ‘city’ from a contact</p>
+
+<p><strong>Kind</strong>: instance method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">city</span> <span class="o">=</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">city</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="contactavatar--promise-filebox">contact.avatar() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;FileBox&gt;</code></h3>
+
+<p>Get avatar picture file stream</p>
+
+<p><strong>Kind</strong>: instance method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Save avatar to local file like `1-name.jpg`</span>
+
+<span class="kd">const</span> <span class="nx">file</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">avatar</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">file</span><span class="p">.</span><span class="nx">name</span>
+<span class="k">await</span> <span class="nx">file</span><span class="p">.</span><span class="nx">toFile</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nx">name</span><span class="p">()}</span><span class="s2"> with avatar file: </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="contactsync--promise-void">contact.sync() ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;void&gt;</code></h3>
+
+<p>Force reload data for Contact, Sync data from lowlevel API again.</p>
+
+<p><strong>Kind</strong>: instance method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a> <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">sync</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="contactself--boolean">contact.self() ⇒ <code class="language-plaintext highlighter-rouge">boolean</code></h3>
+
+<p>Check if contact is self</p>
+
+<p><strong>Kind</strong>: instance method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a> <strong>Returns</strong>: <code class="language-plaintext highlighter-rouge">boolean</code> - True for contact is self, False for contact is others <strong>Example</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isSelf</span> <span class="o">=</span> <span class="nx">contact</span><span class="p">.</span><span class="nb">self</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="contactfindquery--promise-contact--null">Contact.find(query) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact | null&gt;</code></h3>
+
+<p>Try to find a contact by filter: {name: string | RegExp} / {alias: string | RegExp}</p>
+
+<p>Find contact by name or alias, if the result more than one, return the first one.</p>
+
+<p><strong>Kind</strong>: static method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a> <strong>Returns</strong>: <code class="language-plaintext highlighter-rouge">Promise.</code> - If can find the contact, return Contact, or return null</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">query</td>
+      <td style="text-align: left"><a href="contact.md#ContactQueryFilter"><code class="language-plaintext highlighter-rouge">ContactQueryFilter</code></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-1">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">contactFindByName</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span><span class="dl">"</span><span class="s2">ruirui</span><span class="dl">"</span><span class="p">}</span> <span class="p">)</span>
+<span class="kd">const</span> <span class="nx">contactFindByAlias</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="na">alias</span><span class="p">:</span><span class="dl">"</span><span class="s2">lijiarui</span><span class="dl">"</span><span class="p">}</span> <span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="contactfindallqueryarg--promise-contact-">Contact.findAll([queryArg]) ⇒ <code class="language-plaintext highlighter-rouge">Promise &lt;Contact []&gt;</code></h3>
+
+<p>Find contact by <code class="language-plaintext highlighter-rouge">name</code> or <code class="language-plaintext highlighter-rouge">alias</code></p>
+
+<p>If use Contact.findAll() get the contact list of the bot. Include the contacts from bot’s rooms.</p>
+
+<h4 id="definition">definition</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">name</code>   the name-string set by user-self, should be called name</li>
+  <li><code class="language-plaintext highlighter-rouge">alias</code>  the name-string set by bot for others, should be called alias</li>
+</ul>
+
+<p><strong>Kind</strong>: static method of <a href="contact.md#Contact"><code class="language-plaintext highlighter-rouge">Contact</code></a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Param</th>
+      <th style="text-align: left">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">queryArg</td>
+      <td style="text-align: left"><a href="contact.md#ContactQueryFilter"><code class="language-plaintext highlighter-rouge">ContactQueryFilter</code></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-2">Example</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Wechaty</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">contactList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">findAll</span><span class="p">()</span>                      <span class="c1">// get the contact list of the bot</span>
+<span class="kd">const</span> <span class="nx">contactList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ruirui</span><span class="dl">'</span> <span class="p">})</span>    <span class="c1">// find all of the contacts whose name is 'ruirui'</span>
+<span class="kd">const</span> <span class="nx">contactList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span> <span class="na">alias</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lijiarui</span><span class="dl">'</span> <span class="p">})</span> <span class="c1">// find all of the contacts whose alias is 'lijiarui'</span>
+</code></pre></div></div>
+
+<h2 id="contactqueryfilter">ContactQueryFilter</h2>
+
+<p>The way to search Contact</p>
+
+<p><strong>Kind</strong>: global typedef <strong>Properties</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">name</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">The name-string set by user-self, should be called name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">alias</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">The name-string set by bot for others, should be called alias <a href="https://github.com/Chatie/wechaty/issues/365">More Detail</a></td>
+    </tr>
+  </tbody>
+</table>
